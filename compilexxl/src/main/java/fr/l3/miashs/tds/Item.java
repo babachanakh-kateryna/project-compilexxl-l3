@@ -29,4 +29,44 @@ public class Item {
         this.type = type;
         this.categorie = categorie;
     }
+
+    //getters
+    public String getNom() { return nom; }
+    public String getType() { return type; }
+    public CategorieSymbole getCategorie() { return categorie; }
+    public String getScope() { return scope; }
+    public Integer getRang() { return rang; }
+    public Integer getNbParam() { return nbParam; }
+    public Integer getNbVar() { return nbVar; }
+    public Integer getVal() { return val; }
+
+    //setters pour les champs optionnels
+    public void setScope(String scope) { this.scope = scope; }
+    public void setRang(Integer rang) { this.rang = rang; }
+    public void setNbParam(Integer nbParam) { this.nbParam = nbParam; }
+    public void setNbVar(Integer nbVar) { this.nbVar = nbVar; }
+    public void setVal(Integer val) { this.val = val; }
+
+    /**
+     * Représentation textuelle d'un item de la table des symboles,
+     * affichant les champs pertinents selon la catégorie du symbole
+     *
+     * @return une chaîne de caractères représentant l'item
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("{ ");
+        sb.append("nom=").append(nom)
+                .append(", type=").append(type)
+                .append(", cat=").append(categorie);
+
+        if (nbParam != null) sb.append(", nb_param=").append(nbParam);
+        if (nbVar != null) sb.append(", nb_var=").append(nbVar);
+        if (scope != null) sb.append(", scope=").append(scope);
+        if (rang != null) sb.append(", rang=").append(rang);
+        if (val != null) sb.append(", val=").append(val);
+
+        sb.append(" }");
+        return sb.toString();
+    }
 }
