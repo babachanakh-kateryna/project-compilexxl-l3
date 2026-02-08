@@ -7,6 +7,26 @@ import fr.l3.miashs.tds.Tds;
 /**
  * Génération de la section DATA : variables globales
  */
+
+/*
+pseudo code vu en cours de compilation :
+
+generer_data:
+    -> tds
+    <- code
+debut
+    code <- Ø
+    pour chaque e de tds faire
+        si e est globale
+         alors
+              code +<- e.nom : LONG(e.valeur)
+        fsi
+    fpour
+    retourner code
+fin
+
+ */
+
 public class GenerateurData {
 
     /**
