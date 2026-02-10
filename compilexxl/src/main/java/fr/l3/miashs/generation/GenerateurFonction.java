@@ -7,7 +7,7 @@ package fr.l3.miashs.generation;
 /*
 pseudo code vu en cours de compilation :
 
-generer_retour:
+generer_fonction:
     -> a : arbre
     <- code : string
 debut

@@ -1,5 +1,7 @@
 package fr.l3.miashs.generation;
 
+import fr.ul.miashs.compil.arbre.*;
+
 /**
  * Classe de génération de code pour les retours de fonctions
  */
@@ -20,4 +22,15 @@ fin
 
  */
 public class GenerateurRetour {
+
+    public String genererRetour(Noeud a) {
+        /*
+        String code = genererExpression(a.getFils().get(0));
+        int offset = 2 + a.getValeur().getNbParam();
+        code += "POP(R0)\n";
+        code += "PUTFRAME(R0, " + (offset * 4) + ")\n";
+        code += "BR(ret_" + a.getValeur().getNom() + ")\n";
+        return code;*/
+        return null;
+    }
 }
