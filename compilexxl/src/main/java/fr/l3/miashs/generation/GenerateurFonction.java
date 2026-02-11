@@ -28,4 +28,5 @@ fin
 
  */
 public class GenerateurFonction {
+    //TODO: à compléter
 }

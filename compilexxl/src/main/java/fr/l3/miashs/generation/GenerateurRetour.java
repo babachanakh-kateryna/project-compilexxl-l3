@@ -23,7 +23,8 @@ fin
  */
 public class GenerateurRetour {
 
-    public String genererRetour(Noeud a) {
+    public String generer(Noeud a) {
+        //TODO: à compléter
         /*
         String code = genererExpression(a.getFils().get(0));
         int offset = 2 + a.getValeur().getNbParam();
