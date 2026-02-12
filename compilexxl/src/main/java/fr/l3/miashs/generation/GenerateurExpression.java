@@ -124,7 +124,7 @@ public class GenerateurExpression {
      * @param idf l'identifiant à générer
      * @param tds la table des symboles
      */
-    private void genererIdf(Idf idf, Tds tds) {
+        private void genererIdf(Idf idf, Tds tds) {
         String nom = idf.getValeur().toString();
         Item item = tds.rechercher(nom);
 
@@ -136,16 +136,16 @@ public class GenerateurExpression {
             // global: on charge directement en mémoire
             case GLOBAL -> out.append("LD(").append(nom).append(", R0)\n").append("PUSH(R0)\n");
 
-            // local: on utilise l'offset pour accéder à la variable dans la pile (offset = -(rang + 1))
+            // local: on utilise l'offset pour accéder à la variable dans la pile
             case LOCAL -> {
                 int offset = item.getRang(); // local0=0, local1=1 a partir de BP
-                out.append("GETFRAME(").append(offset).append(", R0)\n").append("PUSH(R0)\n");
+                out.append("GETFRAME(").append(offset*4).append(", R0)\n").append("PUSH(R0)\n");
             }
 
             // paramètre: on utilise l'offset pour accéder au paramètre dans la pile (offset = rang + 4)
             case PARAM -> {
-                int offset = -(3 + item.getRang()); // param0=-3, param1=-4, a partir de BP
-                out.append("GETFRAME(").append(offset).append(", R0)\n").append("PUSH(R0)\n");
+                int offset = 1 + item.getNbParam() + item.getRang(); // param0=-3, param1=-4, a partir de BP
+                out.append("GETFRAME(").append(offset*(-4)).append(", R0)\n").append("PUSH(R0)\n");
             }
 
             default -> throw new IllegalArgumentException("Identifiant de catégorie non gérée: " + item.getCategorie());
