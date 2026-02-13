@@ -59,10 +59,10 @@ public class GenerateurFonction {
         //fonction
         code.append(nomFonction).append(":\n");
 
-        code.append("PUSH(LP)\n");
-        code.append("PUSH(BP)\n");
-        code.append("MOVE(SP, BP)\n");
-        code.append("ALLOCATE(").append(nbLoc).append(")\n");
+        code.append("\tPUSH(LP)\n");
+        code.append("\tPUSH(BP)\n");
+        code.append("\tMOVE(SP, BP)\n");
+        code.append("\tALLOCATE(").append(nbLoc).append(")\n");
 
         // genérer le code pour les instructions de la fonction
         GenerateurInstruction genInst = new GenerateurInstruction(nomFonction);
@@ -78,10 +78,10 @@ public class GenerateurFonction {
         code.append("ret_").append(nomFonction).append(":\n");
 
         //fin
-        code.append("DEALLOCATE(").append(nbLoc).append(")\n");
-        code.append("POP(BP)\n");
-        code.append("POP(LP)\n");
-        code.append("RTN()\n");
+        code.append("\tDEALLOCATE(").append(nbLoc).append(")\n");
+        code.append("\tPOP(BP)\n");
+        code.append("\tPOP(LP)\n");
+        code.append("\tRTN()\n");
 
         return code.toString();
     }

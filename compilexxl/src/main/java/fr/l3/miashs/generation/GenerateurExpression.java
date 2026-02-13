@@ -115,8 +115,8 @@ public class GenerateurExpression {
      * @param c la constante à générer
      */
     private void genererConst(Const c) {
-        out.append("CMOVE(").append(c.getValeur()).append(", R0)\n");
-        out.append("PUSH(R0)\n");
+        out.append("\tCMOVE(").append(c.getValeur()).append(", R0)\n");
+        out.append("\tPUSH(R0)\n");
     }
 
     /**
@@ -134,18 +134,18 @@ public class GenerateurExpression {
 
         switch (item.getCategorie()) {
             // global: on charge directement en mémoire
-            case GLOBAL -> out.append("LD(").append(nom).append(", R0)\n").append("PUSH(R0)\n");
+            case GLOBAL -> out.append("\tLD(").append(nom).append(", R0)\n").append("PUSH(R0)\n");
 
             // local: on utilise l'offset pour accéder à la variable dans la pile
             case LOCAL -> {
                 int offset = item.getRang(); // local0=0, local1=1 a partir de BP
-                out.append("GETFRAME(").append(offset*4).append(", R0)\n").append("PUSH(R0)\n");
+                out.append("\tGETFRAME(").append(offset*4).append(", R0)\n").append("PUSH(R0)\n");
             }
 
             // paramètre: on utilise l'offset pour accéder au paramètre dans la pile (offset = rang + 4)
             case PARAM -> {
                 int offset = 1 + item.getNbParam() + item.getRang(); // param0=-3, param1=-4, a partir de BP
-                out.append("GETFRAME(").append(offset*(-4)).append(", R0)\n").append("PUSH(R0)\n");
+                out.append("\tGETFRAME(").append(offset*(-4)).append(", R0)\n").append("PUSH(R0)\n");
             }
 
             default -> throw new IllegalArgumentException("Identifiant de catégorie non gérée: " + item.getCategorie());
@@ -170,10 +170,10 @@ public class GenerateurExpression {
         genererExpression(gauche, tds); // résultat de gauche sur la pile
         genererExpression(droit, tds); // résultat de droit sur la pile
 
-        out.append("POP(R1)\n"); // droit dans R1
-        out.append("POP(R0)\n"); // gauche dans R0
-        out.append(operation).append("(R0, R1, R0)\n"); // R0 = R0 op R1
-        out.append("PUSH(R0)\n"); // résultat dans R0 et poussé sur la pile
+        out.append("\tPOP(R1)\n"); // droit dans R1
+        out.append("\tPOP(R0)\n"); // gauche dans R0
+        out.append("\t").append(operation).append("(R0, R1, R0)\n"); // R0 = R0 op R1
+        out.append("\tPUSH(R0)\n"); // résultat dans R0 et poussé sur la pile
     }
 
 }

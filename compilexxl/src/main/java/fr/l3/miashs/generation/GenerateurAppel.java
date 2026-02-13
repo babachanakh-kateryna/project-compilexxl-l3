@@ -67,7 +67,7 @@ public class GenerateurAppel {
         int nbParam = (f.getNbParam() == null) ? 0 : f.getNbParam();
 
         if (type != null && !"void".equals(type)) {
-            out.append("ALLOCATE(1)\n");
+            out.append("\tALLOCATE(1)\n");
         }
 
         // générer le code pour les arguments de l'appel
@@ -79,12 +79,12 @@ public class GenerateurAppel {
         }
 
         // générer le code pour l'appel de la fonction
-        out.append("CALL(").append(nomFonction).append(")\n");
-        out.append("DEALLOCATE(").append(nbParam).append(")\n");
+        out.append("\tCALL(").append(nomFonction).append(")\n");
+        out.append("\tDEALLOCATE(").append(nbParam).append(")\n");
 
         // si c une instruction (on ne garde pas le résultat) => on enlève le slot result
         if (type != null && !"void".equals(type) && !garderResultat) {
-            out.append("DEALLOCATE(1)\n");
+            out.append("\tDEALLOCATE(1)\n");
         }
 
         return out.toString();

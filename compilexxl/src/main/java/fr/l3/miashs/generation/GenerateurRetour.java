@@ -61,10 +61,10 @@ public class GenerateurRetour {
             int nbParam = getNbParamFonction(tds, scopeFonction);
             int offset = 2 + nbParam;
 
-            out.append("POP(R0)\n");
-            out.append("PUTFRAME(R0, ").append(offset * 4).append(")\n");
+            out.append("\tPOP(R0)\n");
+            out.append("\tPUTFRAME(R0, ").append(offset * 4).append(")\n");
         }
-        out.append("BR(ret_").append(scopeFonction).append(")\n");
+        out.append("\tBR(ret_").append(scopeFonction).append(")\n");
 
         return out.toString();
     }

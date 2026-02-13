@@ -43,7 +43,7 @@ public class GenerateurData {
             //si c une variable GLOBALE
             if(item.getCategorie() == CategorieSymbole.GLOBAL){
                 int valeur = (item.getVal() != null) ? item.getVal() : 0; //si la variable n'a pas de valeur, on l'initialise à 0
-                sb.append(item.getNom()).append(" : LONG(").append(valeur).append(")\n");
+                sb.append("\t").append(item.getNom()).append(" : LONG(").append(valeur).append(")\n");
             }
 
         }

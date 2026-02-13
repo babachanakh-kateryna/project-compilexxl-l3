@@ -49,7 +49,7 @@ public class GenerateurAffectation {
         code.append(genExpr.generer(n.getFilsDroit(), tds));
 
         // recuper la valeur calculee
-        code.append("POP(R0)\n");
+        code.append("\tPOP(R0)\n");
 
         // identif la variable à gauche
         Idf idf = (Idf) n.getFilsGauche();
@@ -63,16 +63,16 @@ public class GenerateurAffectation {
 
         switch (item.getCategorie()) {
 
-            case GLOBAL -> code.append("ST(R0, ").append(nom).append(")\n");
+            case GLOBAL -> code.append("\tST(R0, ").append(nom).append(")\n");
 
             case LOCAL -> {
                 int offset = item.getRang() * 4;
-                code.append("PUTFRAME(R0, ").append(offset).append(")\n");
+                code.append("\tPUTFRAME(R0, ").append(offset).append(")\n");
             }
 
             case PARAM -> {
                 int offset = (1 + item.getNbParam() + item.getRang()) * (-4);
-                code.append("PUTFRAME(R0, ").append(offset).append(")\n");
+                code.append("\tPUTFRAME(R0, ").append(offset).append(")\n");
             }
 
             default -> throw new IllegalArgumentException("Catégorie non gérée pour affectation: " + item.getCategorie());

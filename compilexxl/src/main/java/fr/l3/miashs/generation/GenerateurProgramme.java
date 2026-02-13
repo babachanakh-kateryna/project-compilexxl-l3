@@ -54,16 +54,16 @@ public class GenerateurProgramme {
 
         // entete du programme
         code.append(".include beta.uasm\n");
-        code.append("CMOVE(pile, SP)\n");
-        code.append("BR(debut)\n");
+        code.append("\tCMOVE(pile, SP)\n");
+        code.append("\tBR(debut)\n");
 
         // section DATA
         code.append(new GenerateurData().generer(tds));
 
         //point d'entrée
         code.append("debut:\n");
-        code.append("CALL(main)\n");
-        code.append("HALT()\n");
+        code.append("\tCALL(main)\n");
+        code.append("\tHALT()\n");
 
         // génération de toutes les fonctions
         GenerateurFonction genFct = new GenerateurFonction();
