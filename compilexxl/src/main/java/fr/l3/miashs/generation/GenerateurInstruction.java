@@ -61,9 +61,9 @@ public class GenerateurInstruction {
 
             //case TQ -> new GenerateurTantQue(scopeFonction).generer((TantQue) a, tds);
 
-            //case ECR -> new GenerateurEcrire(scopeFonction).generer((Ecrire) a, tds);
+            case ECR -> new GenerateurEcrire(scopeFonction).generer((Ecrire) a, tds);
 
-            case RET -> new GenerateurRetour(scopeFonction).generer(a, tds);
+            case RET -> new GenerateurRetour(scopeFonction).generer((Retour) a, tds);
 
             default -> throw new UnsupportedOperationException("Instruction non gérée: " + a.getCat());
         };

@@ -39,16 +39,13 @@ public class GenerateurRetour {
 
     /**
      * Génère le code pour un retour de fonction
-     * @param a le noeud de retour à générer
-     * @param tds la table des symboles pour récupérer les informations sur la fonction courante
+     * @param ret le noeud de retour à générer
+     * @param tds la table des symboles
      * @return le code assembleur généré pour le retour de fonction
      */
-    public String generer(Noeud a, Tds tds) {
+    public String generer(Retour ret, Tds tds) {
         out.setLength(0);
-        // Vérification que le noeud est un retour
-        if (!(a instanceof Retour ret)) {
-            throw new IllegalArgumentException("Le noeud doit être un retour");
-        }
+        if (ret == null) return "";
 
         Noeud expression = ret.getLeFils();
 
