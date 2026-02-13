@@ -10,8 +10,8 @@ public class Tds {
     private final Map<String, Item> items; // items de la TDS, indexés par leur nom
 
     /** Constructeur de la TDS, initialisant la map d'items */
-    public Tds(Map<String, Item> items) {
-        this.items = items;
+    public Tds() {
+        this.items = new HashMap<>();
     }
 
     /**
