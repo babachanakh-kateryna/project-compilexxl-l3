@@ -95,7 +95,7 @@ public class GenerateurExpression {
 
             case LIRE -> genererLire();
 
-            case APPEL -> genererAppel((Appel) n, tds);
+            case APPEL -> out.append(new GenerateurAppel(scopeFonction).generer((Appel) n, tds, true));
 
             case PLUS -> genererBinaire(((Plus) n).getFilsGauche(), ((Plus) n).getFilsDroit(), "ADD", tds);
 
@@ -157,61 +157,6 @@ public class GenerateurExpression {
      */
     private void genererLire() {
         out.append("RDINT()\n").append("PUSH(R0)\n");
-    }
-
-    /**
-     * Génère le code pour un appel de fonction
-     * @param appel l'appel de fonction à générer
-     * @param tds la table des symboles
-     */
-    /*
-    pseudo code vu en cours de compilation :
-
-    generer_appel:
-        -> a : arbre
-        <- code : string
-    debut
-        code <- Ø
-        si a.valeur.type != void
-            alors
-                code +<- ALLOCATE(1)
-        fsi
-
-        pour chaque f ∈ fils(a) faire
-            code +<- generer_expression(f)
-        fpour
-
-        code +<- CALL(a.valeur.nom)
-        code +<- DEALLOCATE(a.valeur.nb_param)
-    fin
-
-     */
-    private void genererAppel(Appel appel, Tds tds) {
-        String nomFonction = appel.getValeur().toString();
-
-        // vérifier que la fonction existe dans la TDS et récupérer son item
-        Item f = tds.rechercher(nomFonction);
-        if (f == null || f.getCategorie() != CategorieSymbole.FONCTION) {
-            throw new IllegalArgumentException("Fonction non trouvée dans la TDS: " + nomFonction);
-        }
-
-        String type = f.getType();
-        int nbParam = (f.getNbParam() == null) ? 0 : f.getNbParam();
-
-        if (type != null && !"void".equals(type)) {
-            out.append("ALLOCATE(1)\n");
-        }
-
-        // générer le code pour les arguments de l'appel
-        if (appel.getFils() != null) {
-            for (Noeud arg : appel.getFils()) {
-                genererExpression(arg, tds); // chaque argument est généré et son résultat est poussé sur la pile
-            }
-        }
-
-        // générer le code pour l'appel de la fonction
-        out.append("CALL(").append(nomFonction).append(")\n");
-        out.append("DEALLOCATE(").append(nbParam).append(")\n");
     }
 
     /**
