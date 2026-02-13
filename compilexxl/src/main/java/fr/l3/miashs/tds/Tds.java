@@ -1,6 +1,6 @@
 package fr.l3.miashs.tds;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /** * Classe représentant la table des symboles (TDS) d'un programme
@@ -11,7 +11,7 @@ public class Tds {
 
     /** Constructeur de la TDS, initialisant la map d'items */
     public Tds() {
-        this.items = new HashMap<>();
+        this.items = new LinkedHashMap<>();
     }
 
     /**
