@@ -53,7 +53,7 @@ public class GenerateurInstruction {
 
         return switch (a.getCat()) {
 
-            //case AFF -> new GenerateurAffectation(scopeFonction).generer((Affectation) a, tds);
+            case AFF -> new GenerateurAffectation(scopeFonction).generer((Affectation) a, tds);
 
             case APPEL -> new GenerateurAppel(scopeFonction).generer((Appel) a, tds, false);
 

@@ -50,11 +50,7 @@ public class GenerateurRetour {
             throw new IllegalArgumentException("Le noeud doit être un retour");
         }
 
-        Noeud expression = null;
-
-        if (a.getFils() != null && !a.getFils().isEmpty()) {
-            expression = a.getFils().get(0); // récupère l'expression de retour s'il y en a une
-        }
+        Noeud expression = ret.getLeFils();
 
         if (expression != null) {
             // create un générateur d'expression pour la fonction courante
