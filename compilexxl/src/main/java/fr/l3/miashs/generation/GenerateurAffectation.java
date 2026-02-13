@@ -1,10 +1,10 @@
 package fr.l3.miashs.generation;
 
+import fr.l3.miashs.tds.*;
 import fr.ul.miashs.compil.arbre.*;
-import fr.l3.miashs.tds.CategorieSymbole;
 
 /**
- * Classe de génération d'affectations
+ * Genere le code assembleur pour une affectation
  */
 
 /*
@@ -25,37 +25,60 @@ fin
 */
 public class GenerateurAffectation {
 
-    private final GenerateurExpression generateurExpression;
+    private final String scopeFonction;
 
-    public GenerateurAffectation(GenerateurExpression generateurExpression) {
-        this.generateurExpression = generateurExpression;
+    /**
+     * Constructeur
+     * @param scopeFonction le nom de la fonction courante
+     */
+    public GenerateurAffectation(String scopeFonction) {
+        this.scopeFonction = scopeFonction;
     }
 
-    public String generer(Noeud a) {
-        // Vérification que le noeud est une affectation
-        if (!(a instanceof Affectation aff)) {
-            throw new IllegalArgumentException("Le noeud doit être une affectation");
-        }
-
-        Noeud gauche = aff.getFils().get(0);
-        Noeud droit = aff.getFils().get(1);
-
-        // Vérification que le fils gauche est un identifiant
-        if (!(gauche instanceof Idf idf)) {
-            throw new IllegalArgumentException("Le fils gauche doit être un identifiant");
-        }
-
-        String nomVar = String.valueOf(idf.getValeur());
-
+    /**
+     * Génère le code pour une affectation donnée
+     * @param n le noeud d'affectation à générer
+     * @param tds la table des symboles
+     * @return le code assembleur généré pour l'affectation
+     */
+    public String generer(Affectation n, Tds tds) {
         StringBuilder code = new StringBuilder();
-        //code.append(generateurExpression.generer(gauche));
+
+        // generer l'expression du cote droit
+        GenerateurExpression genExpr = new GenerateurExpression(scopeFonction);
+        code.append(genExpr.generer(n.getFilsDroit(), tds));
+
+        // recuper la valeur calculee
         code.append("POP(R0)\n");
 
-        //todo
+        // identif la variable à gauche
+        Idf idf = (Idf) n.getFilsGauche();
+        String nom = idf.getValeur().toString();
 
+        //verifier que la variable existe dans la TDS
+        Item item = tds.rechercher(nom);
+        if (item == null) {
+            throw new IllegalArgumentException("Variable non trouvée dans la TDS: " + nom);
+        }
 
+        switch (item.getCategorie()) {
 
-        return null;
+            case GLOBAL -> code.append("ST(R0, ").append(nom).append(")\n");
+
+            case LOCAL -> {
+                int offset = item.getRang() * 4;
+                code.append("PUTFRAME(R0, ").append(offset).append(")\n");
+            }
+
+            case PARAM -> {
+                int offset = (1 + item.getNbParam() + item.getRang()) * (-4);
+                code.append("PUTFRAME(R0, ").append(offset).append(")\n");
+            }
+
+            default -> throw new IllegalArgumentException("Catégorie non gérée pour affectation: " + item.getCategorie());
+        }
+
+        return code.toString();
 
     }
 }
