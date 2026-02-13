@@ -4,7 +4,6 @@ import fr.ul.miashs.compil.arbre.*;
 
 import java.util.ArrayList;
 
-
 /**
  * Test de génération d'un programme minimal
  */
