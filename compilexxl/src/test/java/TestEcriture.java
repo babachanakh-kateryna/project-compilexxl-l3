@@ -5,7 +5,7 @@ import fr.ul.miashs.compil.arbre.*;
 import java.util.ArrayList;
 
 /**
- * Test de génération de code pour une écriture
+ * Test de génération de code pour une écriture (exemple 4)
  */
 public class TestEcriture {
     public static void main(String[] args) {
@@ -75,8 +75,6 @@ public class TestEcriture {
         //fonction main
         Tds tds = new Tds();
         Item itemMain = new Item("main", "void", CategorieSymbole.FONCTION);
-        itemMain.setNbParam(0);
-        itemMain.setNbVar(0);
         tds.ajouter(itemMain);
 
         // Variable globale

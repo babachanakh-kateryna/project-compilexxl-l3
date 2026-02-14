@@ -5,7 +5,7 @@ import fr.ul.miashs.compil.arbre.*;
 import java.util.ArrayList;
 
 /**
- * Test de génération de code pour une expression
+ * Test de génération de code pour une expression (exemple 3)
  */
 public class TestExpression {
     public static void main(String[] args) {
@@ -79,8 +79,6 @@ public class TestExpression {
         //fonction main
         Tds tds = new Tds();
         Item itemMain = new Item("main", "void", CategorieSymbole.FONCTION);
-        itemMain.setNbParam(0);
-        itemMain.setNbVar(0);
         tds.ajouter(itemMain);
 
         // Variables globales

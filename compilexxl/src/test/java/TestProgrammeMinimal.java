@@ -5,7 +5,7 @@ import fr.ul.miashs.compil.arbre.*;
 import java.util.ArrayList;
 
 /**
- * Test de génération d'un programme minimal
+ * Test de génération d'un programme minimal (exemple 1)
  */
 public class TestProgrammeMinimal {
 
@@ -31,8 +31,6 @@ public class TestProgrammeMinimal {
 
         Tds tds = new Tds();
         Item itemMain = new Item("main", "void", CategorieSymbole.FONCTION);
-        itemMain.setNbParam(0);
-        itemMain.setNbVar(0);
         tds.ajouter(itemMain);
 
         //Affichage ast

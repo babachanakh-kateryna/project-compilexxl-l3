@@ -5,7 +5,7 @@ import fr.ul.miashs.compil.arbre.*;
 import java.util.ArrayList;
 
 /**
- * Classe pour tester le deuxième exemple (variables globales)
+ * Classe pour tester le exemple 2 : variables globales
  */
 public class TestVariablesGlobales {
 
@@ -33,8 +33,6 @@ public class TestVariablesGlobales {
 
         // Fonction main
         Item itemMain = new Item("main", "void", CategorieSymbole.FONCTION);
-        itemMain.setNbParam(0);
-        itemMain.setNbVar(0);
         tds.ajouter(itemMain);
 
         // Variables globales
