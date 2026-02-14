@@ -54,6 +54,8 @@ public class GenerateurProgramme {
 
         // entete du programme
         code.append(".include beta.uasm\n");
+        code.append(".options tty\n");
+        code.append(".include intio.uasm\n");
         code.append("\tCMOVE(pile, SP)\n");
         code.append("\tBR(debut)\n");
 

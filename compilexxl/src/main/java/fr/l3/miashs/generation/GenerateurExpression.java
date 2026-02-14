@@ -134,18 +134,18 @@ public class GenerateurExpression {
 
         switch (item.getCategorie()) {
             // global: on charge directement en mémoire
-            case GLOBAL -> out.append("\tLD(").append(nom).append(", R0)\n").append("PUSH(R0)\n");
+            case GLOBAL -> out.append("\tLD(").append(nom).append(", R0)\n").append("\tPUSH(R0)\n");
 
             // local: on utilise l'offset pour accéder à la variable dans la pile
             case LOCAL -> {
                 int offset = item.getRang(); // local0=0, local1=1 a partir de BP
-                out.append("\tGETFRAME(").append(offset*4).append(", R0)\n").append("PUSH(R0)\n");
+                out.append("\tGETFRAME(").append(offset*4).append(", R0)\n").append("\tPUSH(R0)\n");
             }
 
             // paramètre: on utilise l'offset pour accéder au paramètre dans la pile (offset = rang + 4)
             case PARAM -> {
                 int offset = 1 + item.getNbParam() + item.getRang(); // param0=-3, param1=-4, a partir de BP
-                out.append("\tGETFRAME(").append(offset*(-4)).append(", R0)\n").append("PUSH(R0)\n");
+                out.append("\tGETFRAME(").append(offset*(-4)).append(", R0)\n").append("\tPUSH(R0)\n");
             }
 
             default -> throw new IllegalArgumentException("Identifiant de catégorie non gérée: " + item.getCategorie());
@@ -156,7 +156,7 @@ public class GenerateurExpression {
      * Génère le code pour une lecture
      */
     private void genererLire() {
-        out.append("RDINT()\n").append("PUSH(R0)\n");
+        out.append("\tRDINT()\n").append("\tPUSH(R0)\n");
     }
 
     /**
