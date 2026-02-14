@@ -81,10 +81,10 @@ public class GenerateurCondition {
 
             //supérieur
             case SUP ->
-                    out.append("\tCMPLT(R1, R2, R3)\n"); // R2 > R1
+                    out.append("\tCMPLT(R2, R1, R3)\n"); // R2 > R1
             //inférieur
             case INF ->
-                    out.append("\tCMPLT(R2, R1, R3)\n"); // R2 < R1
+                    out.append("\tCMPLT(R1, R2, R3)\n"); // R2 < R1
             //supérieur ou égal
             case SUPE -> {
                 out.append("\tCMPLT(R2, R1, R3)\n");
