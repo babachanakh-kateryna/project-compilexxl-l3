@@ -52,11 +52,19 @@ public class GenerateurAffectation {
         code.append("\tPOP(R0)\n");
 
         // identif la variable à gauche
-        Idf idf = (Idf) n.getFilsGauche();
+        if (!(n.getFilsGauche() instanceof Idf idf)) {
+            throw new IllegalArgumentException("Le fils gauche d'une affectation doit être un IDF");
+        }
         String nom = idf.getValeur().toString();
 
-        //verifier que la variable existe dans la TDS
-        Item item = tds.rechercher(nom);
+        //rechercher avec scope: nom@scope, puis nom global
+        Item item = null;
+        if (scopeFonction != null && !scopeFonction.isBlank()) {
+            item = tds.rechercher(nom + "@" + scopeFonction);// nom@scope
+        }
+        if (item == null) {
+            item = tds.rechercher(nom);
+        }
         if (item == null) {
             throw new IllegalArgumentException("Variable non trouvée dans la TDS: " + nom);
         }

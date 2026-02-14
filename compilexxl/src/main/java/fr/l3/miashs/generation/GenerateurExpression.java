@@ -124,9 +124,19 @@ public class GenerateurExpression {
      * @param idf l'identifiant à générer
      * @param tds la table des symboles
      */
-        private void genererIdf(Idf idf, Tds tds) {
+    private void genererIdf(Idf idf, Tds tds) {
         String nom = idf.getValeur().toString();
-        Item item = tds.rechercher(nom);
+
+        // rechercher d'abord dans la TDS avec le scope de la fonction courante (pour gérer les variables locales)
+        Item item = null;
+        if (scopeFonction != null && !scopeFonction.isBlank()) {
+            item = tds.rechercher(nom + "@" + scopeFonction);// nom@scope
+        }
+
+        //si pas trouvé, rechercher dans la TDS sans scope (pour gérer les variables globales)
+        if (item == null) {
+            item = tds.rechercher(nom);
+        }
 
         if (item == null) {
             throw new IllegalArgumentException("Identifiant non trouvé dans la TDS: " + nom);
