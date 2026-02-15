@@ -3,6 +3,8 @@ package fr.l3.miashs.generation;
 import fr.l3.miashs.tds.Tds;
 import fr.ul.miashs.compil.arbre.*;
 
+import java.util.List;
+
 /**
  * Génère le code assembleur pour un bloc d'instructions
  */
@@ -23,8 +25,6 @@ fin
  */
 public class GenerateurBloc {
 
-    private final StringBuilder out = new StringBuilder();
-
     // fonction courante
     private final String scopeFonction;
 
@@ -43,24 +43,17 @@ public class GenerateurBloc {
      * @return le code généré
      */
     public String generer(Noeud bloc, Tds tds) {
-        out.setLength(0);
-        genererBloc(bloc, tds);
-        return out.toString();
-    }
+        if (bloc == null) return "";
 
-    /**
-     * Méthode interne qui parcourt les instructions du bloc
-     * @param n le noeud bloc
-     * @param tds la table des symboles
-     */
-    private void genererBloc(Noeud n, Tds tds) {
-
-        if (n == null || n.getFils() == null) return;
+        StringBuilder code = new StringBuilder();
+        List<Noeud> insts = bloc.getFils();
+        if (insts == null) return "";
 
         GenerateurInstruction genInst = new GenerateurInstruction(scopeFonction);
 
-        for (Noeud instr : n.getFils()) {
-            out.append(genInst.generer(instr, tds));
+        for (Noeud inst : insts) {
+            code.append(genInst.generer(inst, tds));
         }
+        return code.toString();
     }
 }
