@@ -59,7 +59,7 @@ public class GenerateurInstruction {
 
             case SI -> new GenerateurSi(scopeFonction).generer((Si) a, tds);
 
-            //case TQ -> new GenerateurTantQue(scopeFonction).generer((TantQue) a, tds);
+            case TQ -> new GenerateurTantQue(scopeFonction).generer((TantQue) a, tds);
 
             case ECR -> new GenerateurEcrire(scopeFonction).generer((Ecrire) a, tds);
 
