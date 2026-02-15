@@ -1,0 +1,17 @@
+.include beta.uasm
+	CMOVE(pile, SP)
+	BR(debut)
+debut:
+	CALL(main)
+	HALT()
+main:
+	PUSH(LP)
+	PUSH(BP)
+	MOVE(SP, BP)
+	ALLOCATE(0)
+ret_main:
+	DEALLOCATE(0)
+	POP(BP)
+	POP(LP)
+	RTN()
+pile:

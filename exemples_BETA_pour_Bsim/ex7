@@ -1,0 +1,49 @@
+.include beta.uasm
+.options tty
+.include intio.uasm
+	CMOVE(pile, SP)
+	BR(debut)
+	a : LONG(1)
+	b : LONG(2)
+	x : LONG(0)
+debut:
+	CALL(main)
+	HALT()
+main:
+	PUSH(LP)
+	PUSH(BP)
+	MOVE(SP, BP)
+	ALLOCATE(0)
+si_0:
+	LD(a, R0)
+	PUSH(R0)
+	LD(b, R0)
+	PUSH(R0)
+	POP(R1)
+	POP(R2)
+	CMPLT(R1, R2, R3)
+	PUSH(R3)
+	POP(R0)
+	BF(R0, sinon_0)
+	CMOVE(1000, R0)
+	PUSH(R0)
+	POP(R0)
+	ST(R0, x)
+	BR(fsi_0)
+sinon_0:
+	CMOVE(2000, R0)
+	PUSH(R0)
+	POP(R0)
+	ST(R0, x)
+fsi_0:
+	LD(x, R0)
+	PUSH(R0)
+	POP(R0)
+	WRINT()
+ret_main:
+	DEALLOCATE(0)
+	POP(BP)
+	POP(LP)
+	RTN()
+pile:
+	STORAGE(200)

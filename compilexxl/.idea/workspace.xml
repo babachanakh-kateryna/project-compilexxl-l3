@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1672cdf3-d4d1-44fe-a995-887f38ff834b" name="Changes" comment="Test de 9 exemple (récursive)">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/Univ France/L3/s6/compil/project-compilexxl-l3/compilexxl" value="39J7oXE4gU7U2pRzgjHw6bc1v7v" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="39J7oXE4gU7U2pRzgjHw6bc1v7v" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TestConditionnelle.executor": "Run",
+    "Application.TestEcriture.executor": "Run",
+    "Application.TestEcritureExpression.executor": "Run",
+    "Application.TestExpression.executor": "Run",
+    "Application.TestIteration.executor": "Run",
+    "Application.TestProgrammeMinimal.executor": "Run",
+    "Application.TestRecursivite.executor": "Run",
+    "Application.TestVariablesGlobales.executor": "Run",
+    "Application.TestVariablesLocalesEtParametres.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/Univ France/L3/s6/compil/project-compilexxl-l3/compilexxl/src/main/java/fr/l3/miashs/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.TestRecursivite">
+    <configuration name="TestConditionnelle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestConditionnelle" />
+      <module name="compilexxl" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEcritureExpression" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestEcritureExpression" />
+      <module name="compilexxl" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestIteration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestIteration" />
+      <module name="compilexxl" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRecursivite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestRecursivite" />
+      <module name="compilexxl" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestVariablesLocalesEtParametres" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestVariablesLocalesEtParametres" />
+      <module name="compilexxl" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestRecursivite" />
+        <item itemvalue="Application.TestIteration" />
+        <item itemvalue="Application.TestConditionnelle" />
+        <item itemvalue="Application.TestVariablesLocalesEtParametres" />
+        <item itemvalue="Application.TestEcritureExpression" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1672cdf3-d4d1-44fe-a995-887f38ff834b" name="Changes" comment="" />
+      <created>1770402496865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770402496865</updated>
+      <workItem from="1770402498044" duration="1675000" />
+      <workItem from="1770404203437" duration="70875000" />
+      <workItem from="1771051669992" duration="27429000" />
+    </task>
+    <task id="LOCAL-00001" summary="creation dun package tds, ajout enum pour categorie, la classe item qui decrit la ligne dans la table des symboles (champs et constructeur)">
+      <option name="closed" value="true" />
+      <created>1770405339918</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1770405339918</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ajout des getters/setters/toString">
+      <option name="closed" value="true" />
+      <created>1770406189932</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1770406189932</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ajout de la classe Tds">
+      <option name="closed" value="true" />
+      <created>1770563138060</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1770563138060</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ajout des classes vues en cours (sans realisation)">
+      <option name="closed" value="true" />
+      <created>1770565462970</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770565462970</updated>
+    </task>
+    <task id="LOCAL-00005" summary="realisation de classe GenerateurData">
+      <option name="closed" value="true" />
+      <created>1770567187821</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1770567187821</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ajout pseudo code vu en cours aux commentaires">
+      <option name="closed" value="true" />
+      <created>1770587258631</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770587258631</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ajout pseudo code vu en cours aux commentaires">
+      <option name="closed" value="true" />
+      <created>1770730192328</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770730192328</updated>
+    </task>
+    <task id="LOCAL-00008" summary="modif tds">
+      <option name="closed" value="true" />
+      <created>1770829480026</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770829480026</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ajout realisation du GenerateurExpression">
+      <option name="closed" value="true" />
+      <created>1770829506648</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770829506648</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ajout realisation du GenerateurRetour">
+      <option name="closed" value="true" />
+      <created>1770831541780</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1770831541780</updated>
+    </task>
+    <task id="LOCAL-00011" summary="modif genererAppel selon le pseuso code vu en cours">
+      <option name="closed" value="true" />
+      <created>1770906441374</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1770906441374</updated>
+    </task>
+    <task id="LOCAL-00012" summary="modif GenerateurExpression (param/locale)">
+      <option name="closed" value="true" />
+      <created>1770915435344</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770915435344</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ajout GenerateurAppel pour expression et instruction">
+      <option name="closed" value="true" />
+      <created>1770981877533</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1770981877533</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ajout realisation du GenerateurAffectation">
+      <option name="closed" value="true" />
+      <created>1770983060284</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1770983060284</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ajout realisation du GenerateurFonction">
+      <option name="closed" value="true" />
+      <created>1770986418561</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1770986418561</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ptt modif">
+      <option name="closed" value="true" />
+      <created>1770986440710</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1770986440710</updated>
+    </task>
+    <task id="LOCAL-00017" summary="ajout realisation GenerateurProgramme">
+      <option name="closed" value="true" />
+      <created>1770987085614</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1770987085614</updated>
+    </task>
+    <task id="LOCAL-00018" summary="modif constructor">
+      <option name="closed" value="true" />
+      <created>1770991137944</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1770991137944</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Test de génération d'un programme minimal">
+      <option name="closed" value="true" />
+      <created>1770991210787</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1770991210787</updated>
+    </task>
+    <task id="LOCAL-00020" summary="modif representation du code">
+      <option name="closed" value="true" />
+      <created>1771014213155</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1771014213155</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Test de deuxième exemple (variables globales)">
+      <option name="closed" value="true" />
+      <created>1771016986001</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1771016986001</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Test de 3 exemple (expression)">
+      <option name="closed" value="true" />
+      <created>1771019023306</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1771019023306</updated>
+    </task>
+    <task id="LOCAL-00023" summary="ajout GenerateurEcrire">
+      <option name="closed" value="true" />
+      <created>1771020366335</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1771020366335</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Test de génération de code pour une écriture (exemple4)">
+      <option name="closed" value="true" />
+      <created>1771056730383</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1771056730383</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ptt modif des tests">
+      <option name="closed" value="true" />
+      <created>1771058246592</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1771058246592</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Test de 5 exemple (expression)">
+      <option name="closed" value="true" />
+      <created>1771080746204</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1771080746204</updated>
+    </task>
+    <task id="LOCAL-00027" summary="modif f. rechercher avec le scope (nom@scope)">
+      <option name="closed" value="true" />
+      <created>1771089317294</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1771089317294</updated>
+    </task>
+    <task id="LOCAL-00028" summary="modif package tds">
+      <option name="closed" value="true" />
+      <created>1771146687608</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1771146687608</updated>
+    </task>
+    <task id="LOCAL-00029" summary="modif param/prog/retour dans package generation">
+      <option name="closed" value="true" />
+      <created>1771146731900</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1771146731900</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Test de 6 exemple (variables locales et paramètres)">
+      <option name="closed" value="true" />
+      <created>1771146790794</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1771146790794</updated>
+    </task>
+    <task id="LOCAL-00031" summary="unif code">
+      <option name="closed" value="true" />
+      <created>1771149272354</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1771149272354</updated>
+    </task>
+    <task id="LOCAL-00032" summary="modif GenerateurCondition">
+      <option name="closed" value="true" />
+      <created>1771176443910</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1771176443910</updated>
+    </task>
+    <task id="LOCAL-00033" summary="modif GenerateurBloc">
+      <option name="closed" value="true" />
+      <created>1771176632931</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1771176632931</updated>
+    </task>
+    <task id="LOCAL-00034" summary="modif SI">
+      <option name="closed" value="true" />
+      <created>1771180032780</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1771180032780</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Test de 7 exemple (Conditionnelle)">
+      <option name="closed" value="true" />
+      <created>1771180941744</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1771180941744</updated>
+    </task>
+    <task id="LOCAL-00036" summary="modif TQ">
+      <option name="closed" value="true" />
+      <created>1771182658885</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1771182658885</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Test de 8 exemple (Itération)">
+      <option name="closed" value="true" />
+      <created>1771183605103</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1771183605103</updated>
+    </task>
+    <task id="LOCAL-00038" summary="clean">
+      <option name="closed" value="true" />
+      <created>1771185382449</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1771185382449</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Test de 9 exemple (récursive)">
+      <option name="closed" value="true" />
+      <created>1771186483076</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1771186483076</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ajout realisation du GenerateurFonction" />
+    <MESSAGE value="ptt modif" />
+    <MESSAGE value="ajout realisation GenerateurProgramme" />
+    <MESSAGE value="modif constructor" />
+    <MESSAGE value="Test de génération d'un programme minimal" />
+    <MESSAGE value="modif representation du code" />
+    <MESSAGE value="Test de deuxième exemple (variables globales)" />
+    <MESSAGE value="Test de 3 exemple (expression)" />
+    <MESSAGE value="ajout GenerateurEcrire" />
+    <MESSAGE value="Test de génération de code pour une écriture (exemple4)" />
+    <MESSAGE value="ptt modif des tests" />
+    <MESSAGE value="Test de 5 exemple (expression)" />
+    <MESSAGE value="modif f. rechercher avec le scope (nom@scope)" />
+    <MESSAGE value="modif package tds" />
+    <MESSAGE value="modif param/prog/retour dans package generation" />
+    <MESSAGE value="Test de 6 exemple (variables locales et paramètres)" />
+    <MESSAGE value="unif code" />
+    <MESSAGE value="modif GenerateurCondition" />
+    <MESSAGE value="modif GenerateurBloc" />
+    <MESSAGE value="modif SI" />
+    <MESSAGE value="Test de 7 exemple (Conditionnelle)" />
+    <MESSAGE value="modif TQ" />
+    <MESSAGE value="Test de 8 exemple (Itération)" />
+    <MESSAGE value="clean" />
+    <MESSAGE value="Test de 9 exemple (récursive)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test de 9 exemple (récursive)" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>
