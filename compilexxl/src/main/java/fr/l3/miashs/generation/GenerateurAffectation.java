@@ -79,7 +79,8 @@ public class GenerateurAffectation {
             }
 
             case PARAM -> {
-                int offset = (1 + item.getNbParam() + item.getRang()) * (-4);
+                int nbParam = tds.getNbParamFonction(scopeFonction);
+                int offset = -4 * (2 + nbParam - item.getRang());
                 code.append("\tPUTFRAME(R0, ").append(offset).append(")\n");
             }
 

@@ -55,34 +55,15 @@ public class GenerateurRetour {
             out.append(genExpr.generer(expression, tds));
 
             //offset <- 2 + nb_param
-            int nbParam = getNbParamFonction(tds, scopeFonction);
-            int offset = 2 + nbParam;
+            int nbParam = tds.getNbParamFonction(scopeFonction);
+            int offset = -4 * (2 + nbParam + 1);
 
             out.append("\tPOP(R0)\n");
-            out.append("\tPUTFRAME(R0, ").append(offset * 4).append(")\n");
+            out.append("\tPUTFRAME(R0, ").append(offset).append(")\n");
         }
         out.append("\tBR(ret_").append(scopeFonction).append(")\n");
 
         return out.toString();
     }
 
-    /**
-     * Récupère le nombre de paramètres d'une fonction à partir de la TDS
-     * @param tds la table des symboles
-     * @param nomFonction le nom de la fonction dont on veut connaître le nombre de paramètres
-     * @return le nombre de paramètres de la fonction
-     */
-    private int getNbParamFonction(Tds tds, String nomFonction) {
-        Item f = tds.rechercher(nomFonction);
-        if (f == null) {
-            throw new IllegalArgumentException("Fonction non trouvée dans la TDS: " + nomFonction);
-        }
-        if (f.getCategorie() != CategorieSymbole.FONCTION) {
-            throw new IllegalArgumentException("Le symbole '" + nomFonction + "' n'est pas une fonction");
-        }
-        if (f.getNbParam() == null) {
-            throw new IllegalArgumentException("nbParam non défini pour la fonction: " + nomFonction);
-        }
-        return f.getNbParam();
-    }
 }

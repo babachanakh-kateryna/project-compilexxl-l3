@@ -82,6 +82,7 @@ public class GenerateurProgramme {
 
         // pile
         code.append("pile:\n");
+        code.append("\tSTORAGE(200)\n");
 
         return code.toString();
     }

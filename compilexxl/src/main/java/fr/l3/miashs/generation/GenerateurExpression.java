@@ -154,8 +154,9 @@ public class GenerateurExpression {
 
             // paramètre: on utilise l'offset pour accéder au paramètre dans la pile (offset = rang + 4)
             case PARAM -> {
-                int offset = 1 + item.getNbParam() + item.getRang(); // param0=-3, param1=-4, a partir de BP
-                out.append("\tGETFRAME(").append(offset*(-4)).append(", R0)\n").append("\tPUSH(R0)\n");
+                int nbParam = tds.getNbParamFonction(scopeFonction);
+                int offset = -4 * (2 + nbParam - item.getRang());
+                out.append("\tGETFRAME(").append(offset).append(", R0)\n").append("\tPUSH(R0)\n");
             }
 
             default -> throw new IllegalArgumentException("Identifiant de catégorie non gérée: " + item.getCategorie());
