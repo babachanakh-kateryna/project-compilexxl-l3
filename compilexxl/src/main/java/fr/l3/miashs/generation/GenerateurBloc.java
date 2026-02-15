@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 /*
+pseudo code vu en cours de compilation :
+
 generer_bloc
     -> a : arbre
     <- code : ASM
@@ -42,7 +44,7 @@ public class GenerateurBloc {
      * @param tds la table des symboles
      * @return le code généré
      */
-    public String generer(Noeud bloc, Tds tds) {
+    public String generer(Bloc bloc, Tds tds) {
         if (bloc == null) return "";
 
         StringBuilder code = new StringBuilder();

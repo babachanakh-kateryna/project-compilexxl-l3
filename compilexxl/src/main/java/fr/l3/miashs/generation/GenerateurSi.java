@@ -3,12 +3,16 @@ package fr.l3.miashs.generation;
 import fr.ul.miashs.compil.arbre.*;
 import fr.l3.miashs.tds.Tds;
 
+import java.util.List;
+
 /**
  * Classe permettant de générer le code assembleur
  * pour une instruction SI
  */
 
 /*
+pseudo code vu en cours de compilation :
+
 generer_si
     -> a : arbre
     <- code : ASM
@@ -29,7 +33,7 @@ fin
 
 public class GenerateurSi {
 
-    private final StringBuilder out = new StringBuilder();
+    private final String scopeFonction;
     private final GenerateurCondition genCond;
     private final GenerateurBloc genBloc;
 
@@ -38,17 +42,24 @@ public class GenerateurSi {
      * @param scopeFonction le nom de la fonction courante
      */
     public GenerateurSi(String scopeFonction) {
+        this.scopeFonction = scopeFonction;
         this.genCond = new GenerateurCondition(scopeFonction);
         this.genBloc = new GenerateurBloc(scopeFonction);
     }
 
-    public String generer(Noeud siNoeud, Tds tds) {
-        out.setLength(0);
-        genererSi((Si) siNoeud, tds);
-        return out.toString();
-    }
+    /**
+     * Génère le code pour une instruction SI
+     * @param si le noeud de l'instruction SI à générer
+     * @param tds la table des symboles
+     * @return le code assembleur généré pour l'instruction SI
+     */
+    public String generer(Si si, Tds tds) {
+        if (si == null) return "";
 
-    private void genererSi(Si si, Tds tds) {
+        List<Noeud> fils = si.getFils();
+        if (fils == null || fils.size() < 2) {
+            throw new IllegalArgumentException("SI invalide : condition + bloc THEN attendus.");
+        }
 
         int id = si.getValeur();
 
@@ -56,26 +67,27 @@ public class GenerateurSi {
         String labelSinon = "sinon_" + id;
         String labelFin = "fsi_" + id;
 
+        StringBuilder code = new StringBuilder();
+
         // label début
-        out.append(labelSi).append(":\n");
+        code.append(labelSi).append(":\n");
 
         // condition
-        out.append(genCond.generer(si.getFils().get(0), tds));
-        out.append("\tPOP(R0)\n");
-        out.append("\tBF(R0, ").append(labelSinon).append(")\n");
+        code.append(genCond.generer(si.getCondition(), tds));
+        code.append("\tPOP(R0)\n");
+        code.append("\tBF(R0, ").append(labelSinon).append(")\n");
 
         // bloc then
-        out.append(genBloc.generer(si.getFils().get(1), tds));
-        out.append("\tBR(").append(labelFin).append(")\n");
+        code.append(genBloc.generer(si.getBlocAlors(), tds));
+        code.append("\tBR(").append(labelFin).append(")\n");
 
         // bloc else
-        out.append(labelSinon).append(":\n");
-
-        if (si.getFils().size() > 2) {
-            out.append(genBloc.generer(si.getFils().get(2), tds));
-        }
+        code.append(labelSinon).append(":\n");
+        code.append(genBloc.generer(si.getBlocSinon(), tds));
 
         // fin
-        out.append(labelFin).append(":\n");
+        code.append(labelFin).append(":\n");
+
+        return code.toString();
     }
 }
