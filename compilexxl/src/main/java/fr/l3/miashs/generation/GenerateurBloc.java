@@ -8,23 +8,6 @@ import java.util.List;
 /**
  * Génère le code assembleur pour un bloc d'instructions
  */
-
-/*
-pseudo code vu en cours de compilation :
-
-generer_bloc
-    -> a : arbre
-    <- code : ASM
-
-debut
-    code ← ∅
-    pour chaque f ∈ fils(a)
-     faire
-        code ← code + generer_instruction(f)
-    fin
-fin
-
- */
 public class GenerateurBloc {
 
     // fonction courante

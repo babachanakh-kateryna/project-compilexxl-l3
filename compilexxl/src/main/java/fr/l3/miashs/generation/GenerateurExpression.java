@@ -6,53 +6,7 @@ import fr.ul.miashs.compil.arbre.*;
 /**
  * Génère le code assembleur pour une expression
  */
-
-/*
-pseudo code vu en cours de compilation :
-
-generer_expression:
-    -> a : arbre
-    <- code : string
-debut
-    cas CONST
-
-    cas IDF
-        si a.valeur = global :  ld a.valeur
-        sinon si a.valeur = param :
-            offset = 1 + nombre de paramètres + rang du paramètre
-            GETFRAME("offset-4), R0)
-            PUSH(R0)
-        sinon si a.valeur = local :
-
-    cas +
-    ....
-
-    cas LECTURE
-
-    cas APPEL
-fin
-
-   SP
-[ var local m ]
-    |
-    *
-    |
-[ local 1 ]
-[ local 0 ]
---
-[ saved BP ] ← BP
-[ saved LP ]
---
-[ param n ]
-    |
-    *
-    |
-[ param 1 ]
-[ param 0 ]
-[ result ]
-
-*/
-    public class GenerateurExpression {
+public class GenerateurExpression {
 
     //foncction courante
     private final String scopeFonction;

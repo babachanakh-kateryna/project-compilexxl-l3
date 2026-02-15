@@ -9,27 +9,6 @@ import java.util.List;
  * Classe permettant de générer le code assembleur
  * pour une condition (comparaison)
  */
-
-/*
-pseudo code vu en cours de compilation :
-
-generer_condition(a)
-    -> a : arbre
-    <- code : ASM
-début
-    cas a.categorie de
-        superieur :
-            code <- generer_expression(fils1(a))
-            code += generer_expression(fils2(a))
-            code += POP(R1)
-            code += POP(R2)
-            code += CMPLT(R2, R1, R3)
-            сode += PUSH(R3)
-
-       ... autres comparateurs
-fin
-
- */
 public class GenerateurCondition {
 
     private final String scopeFonction;

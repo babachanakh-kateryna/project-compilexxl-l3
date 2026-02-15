@@ -9,23 +9,6 @@ import java.util.List;
  * Classe permettant de générer le code assembleur
  * pour une boucle TantQue
  */
-
-/*
-generer_tq
-    -> a : arbre
-    <- code : ASM
-
-debut
-    code <- tq_a.valeur :
-    code <- code + generer_condition(fg(a))
-    code <- code + POP(R0)
-    code <- code + BF(ftq_a.valeur)
-
-    code <- code + generer_bloc(fd(a))
-    code <- code + BR(tq_a.valeur)
-    ftq_a.valeur :
-fin
- */
 public class GenerateurTantQue {
 
     private final String scopeFonction;

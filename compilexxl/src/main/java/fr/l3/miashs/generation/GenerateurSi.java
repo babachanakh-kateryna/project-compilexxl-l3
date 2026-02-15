@@ -9,28 +9,6 @@ import java.util.List;
  * Classe permettant de générer le code assembleur
  * pour une instruction SI
  */
-
-/*
-pseudo code vu en cours de compilation :
-
-generer_si
-    -> a : arbre
-    <- code : ASM
-
-debut
-    code <- Si_a.valeur :
-    code <- code + generer_condition(fils1(a))
-    code <- code + POP(R0)
-    code <- code + BF(R0, sinon_a.valeur)
-
-    code <- code + generer_bloc(fils2(a))
-    code <- code + BR(fsi_a.valeur)
-    code <- sinon_a.valeur :
-    code <- code + generer_bloc(fils3(a))
-    code <- fsi_a.valeur :
-fin
- */
-
 public class GenerateurSi {
 
     private final String scopeFonction;

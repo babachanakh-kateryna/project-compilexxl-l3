@@ -3,34 +3,8 @@ package fr.l3.miashs.generation;
 import fr.l3.miashs.tds.*;
 import fr.ul.miashs.compil.arbre.*;
 
-
 /**
  * Génère le code assembleur pour un appel de fonction
- */
-
-/*
-pseudo code vu en cours de compilation :
-
-    generer_appel:
-        -> a : arbre
-        <- code : string
-    debut
-        code <- Ø
-        si a.valeur.type != void
-            alors
-                code +<- ALLOCATE(1)
-        fsi
-
-        pour chaque f ∈ fils(a) faire
-            code +<- generer_expression(f)
-        fpour
-
-        code +<- CALL(a.valeur.nom)
-        code +<- DEALLOCATE(a.valeur.nb_param)
-    fin
-
-    !!on va ajouter si une variante "instruction" :
-        si on ne garde pas le résultat ET type != void -> DEALLOCATE(1)
  */
 public class GenerateurAppel {
 
