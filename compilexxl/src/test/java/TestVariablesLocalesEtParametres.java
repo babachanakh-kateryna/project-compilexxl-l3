@@ -66,8 +66,8 @@ public class TestVariablesLocalesEtParametres {
         aff.setFilsDroit(plus);
 
         // return res
-        Retour ret = new Retour("f");          // valeur portée par Retour : on met "f" (nom de la fonction)
-        ret.setLeFils(new Idf("res"));         // fils = IDF res
+        Retour ret = new Retour("f");
+        ret.setLeFils(new Idf("res"));
         f.ajouterUnFils(ret);
 
 
