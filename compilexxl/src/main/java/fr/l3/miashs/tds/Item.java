@@ -62,8 +62,8 @@ public class Item {
 
         if (nbParam != null) sb.append(", nb_param=").append(nbParam);
         if (nbVar != null) sb.append(", nb_var=").append(nbVar);
-        if (scope != null) sb.append(", scope=").append(scope);
         if (rang != null) sb.append(", rang=").append(rang);
+        if (scope != null) sb.append(", scope=").append(scope);
         if (val != null) sb.append(", val=").append(val);
 
         sb.append(" }");

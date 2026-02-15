@@ -59,4 +59,23 @@ public class Tds {
         }
         return sb.toString();
     }
+
+    /**
+     * Récupère le nombre de paramètres d'une fonction à partir de la TDS
+     * @param nomFonction le nom de la fonction
+     * @return le nombre de paramètres de la fonction
+     */
+    public int getNbParamFonction(String nomFonction) {
+        Item f = rechercher(nomFonction);
+        if (f == null) {
+            throw new IllegalArgumentException("Fonction non trouvée dans la TDS: " + nomFonction);
+        }
+        if (f.getCategorie() != CategorieSymbole.FONCTION) {
+            throw new IllegalArgumentException("Le symbole '" + nomFonction + "' n'est pas une fonction");
+        }
+        if (f.getNbParam() == null) {
+            throw new IllegalArgumentException("nbParam non défini pour la fonction: " + nomFonction);
+        }
+        return f.getNbParam();
+    }
 }
