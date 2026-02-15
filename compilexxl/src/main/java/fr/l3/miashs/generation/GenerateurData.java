@@ -35,7 +35,7 @@ public class GenerateurData {
      * @return le code d'initialisation des variables globales
      */
     public String generer(Tds tds) {
-        StringBuffer sb = new StringBuffer();
+        StringBuffer code = new StringBuffer();
 
         //pour chaque variable de la tds, on génère une ligne de code d'initialisation
         for (Item item : tds.getItems().values()) {
@@ -43,10 +43,10 @@ public class GenerateurData {
             //si c une variable GLOBALE
             if(item.getCategorie() == CategorieSymbole.GLOBAL){
                 int valeur = (item.getVal() != null) ? item.getVal() : 0; //si la variable n'a pas de valeur, on l'initialise à 0
-                sb.append("\t").append(item.getNom()).append(" : LONG(").append(valeur).append(")\n");
+                code.append("\t").append(item.getNom()).append(" : LONG(").append(valeur).append(")\n");
             }
 
         }
-        return sb.toString();
+        return code.toString();
     }
 }

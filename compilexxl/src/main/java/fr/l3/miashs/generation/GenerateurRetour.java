@@ -26,7 +26,6 @@ fin
  */
 public class GenerateurRetour {
 
-    private final StringBuilder out = new StringBuilder();
     private final String scopeFonction;
 
     /**
@@ -44,26 +43,26 @@ public class GenerateurRetour {
      * @return le code assembleur généré pour le retour de fonction
      */
     public String generer(Retour ret, Tds tds) {
-        out.setLength(0);
         if (ret == null) return "";
+        StringBuilder code = new StringBuilder();
 
         Noeud expression = ret.getLeFils();
 
         if (expression != null) {
             // create un générateur d'expression pour la fonction courante
             GenerateurExpression genExpr = new GenerateurExpression(scopeFonction);
-            out.append(genExpr.generer(expression, tds));
+            code.append(genExpr.generer(expression, tds));
 
             //offset <- 2 + nb_param
             int nbParam = tds.getNbParamFonction(scopeFonction);
             int offset = -4 * (2 + nbParam + 1);
 
-            out.append("\tPOP(R0)\n");
-            out.append("\tPUTFRAME(R0, ").append(offset).append(")\n");
+            code.append("\tPOP(R0)\n");
+            code.append("\tPUTFRAME(R0, ").append(offset).append(")\n");
         }
-        out.append("\tBR(ret_").append(scopeFonction).append(")\n");
+        code.append("\tBR(ret_").append(scopeFonction).append(")\n");
 
-        return out.toString();
+        return code.toString();
     }
 
 }

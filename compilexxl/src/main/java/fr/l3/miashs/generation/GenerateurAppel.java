@@ -34,7 +34,6 @@ pseudo code vu en cours de compilation :
  */
 public class GenerateurAppel {
 
-    private final StringBuilder out = new StringBuilder();
     private final String scopeFonction;
 
     /**
@@ -53,7 +52,8 @@ public class GenerateurAppel {
      * @return le code assembleur généré pour l'appel de fonction
      */
     public String generer(Appel appel, Tds tds, boolean garderResultat) {
-        out.setLength(0);
+        if (appel == null) return "";
+        StringBuilder code = new StringBuilder();
 
         String nomFonction = appel.getValeur().toString();
         Item f = tds.rechercher(nomFonction);
@@ -67,26 +67,26 @@ public class GenerateurAppel {
         int nbParam = (f.getNbParam() == null) ? 0 : f.getNbParam();
 
         if (type != null && !"void".equals(type)) {
-            out.append("\tALLOCATE(1)\n");
+            code.append("\tALLOCATE(1)\n");
         }
 
         // générer le code pour les arguments de l'appel
         GenerateurExpression genExpr = new GenerateurExpression(scopeFonction);
         if (appel.getFils() != null) {
             for (Noeud arg : appel.getFils()) {
-                out.append(genExpr.generer(arg, tds)); // chaque argument est généré et son résultat est poussé sur la pile
+                code.append(genExpr.generer(arg, tds)); // chaque argument est généré et son résultat est poussé sur la pile
             }
         }
 
         // générer le code pour l'appel de la fonction
-        out.append("\tCALL(").append(nomFonction).append(")\n");
-        out.append("\tDEALLOCATE(").append(nbParam).append(")\n");
+        code.append("\tCALL(").append(nomFonction).append(")\n");
+        code.append("\tDEALLOCATE(").append(nbParam).append(")\n");
 
         // si c une instruction (on ne garde pas le résultat) => on enlève le slot result
         if (type != null && !"void".equals(type) && !garderResultat) {
-            out.append("\tDEALLOCATE(1)\n");
+            code.append("\tDEALLOCATE(1)\n");
         }
 
-        return out.toString();
+        return code.toString();
     }
 }

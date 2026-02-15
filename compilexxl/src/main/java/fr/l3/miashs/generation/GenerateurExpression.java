@@ -52,9 +52,7 @@ fin
 [ result ]
 
 */
-public class GenerateurExpression {
-
-    private final StringBuilder out = new StringBuilder();
+    public class GenerateurExpression {
 
     //foncction courante
     private final String scopeFonction;
@@ -74,49 +72,41 @@ public class GenerateurExpression {
      * @return le code assembleur généré
      */
     public String generer(Noeud expr, Tds tds) {
-        out.setLength(0);
-        genererExpression(expr, tds);
-        return out.toString();
-    }
+        if (expr == null) return "";
+        StringBuilder code = new StringBuilder();
 
-    /**
-     * Méthode interne récursive qui parcourt l’arbre de l’expression et génère le code assembleur
-     * @param n le noeud de l'expression à générer
-     * @param tds la table des symboles
-     */
-    private void genererExpression(Noeud n, Tds tds) {
-        if (n == null) return;
+        switch (expr.getCat()) {
 
-        switch (n.getCat()) {
+            case CONST -> genererConst((Const) expr, code);
 
-            case CONST -> genererConst((Const) n);
+            case IDF -> genererIdf((Idf) expr, tds, code);
 
-            case IDF -> genererIdf((Idf) n, tds);
+            case LIRE -> genererLire(code);
 
-            case LIRE -> genererLire();
+            case APPEL -> code.append(new GenerateurAppel(scopeFonction).generer((Appel) expr, tds, true));
 
-            case APPEL -> out.append(new GenerateurAppel(scopeFonction).generer((Appel) n, tds, true));
+            case PLUS -> genererBinaire(((Plus) expr).getFilsGauche(), ((Plus) expr).getFilsDroit(), "ADD", tds, code);
 
-            case PLUS -> genererBinaire(((Plus) n).getFilsGauche(), ((Plus) n).getFilsDroit(), "ADD", tds);
+            case MOINS -> genererBinaire(((Moins) expr).getFilsGauche(), ((Moins) expr).getFilsDroit(), "SUB", tds, code);
 
-            case MOINS -> genererBinaire(((Moins) n).getFilsGauche(), ((Moins) n).getFilsDroit(), "SUB", tds);
+            case MUL -> genererBinaire(((Multiplication) expr).getFilsGauche(), ((Multiplication) expr).getFilsDroit(), "MUL", tds, code);
 
-            case MUL -> genererBinaire(((Multiplication) n).getFilsGauche(), ((Multiplication) n).getFilsDroit(), "MUL", tds);
+            case DIV -> genererBinaire(((Division) expr).getFilsGauche(), ((Division) expr).getFilsDroit(), "DIV", tds, code);
 
-            case DIV -> genererBinaire(((Division) n).getFilsGauche(), ((Division) n).getFilsDroit(), "DIV", tds);
-
-            default -> throw new UnsupportedOperationException("Expression non gérée: " + n.getCat());
+            default -> throw new UnsupportedOperationException("Expression non gérée: " + expr.getCat());
         }
 
+        return code.toString();
     }
+
 
     /**
      * Génère le code pour une constante
      * @param c la constante à générer
      */
-    private void genererConst(Const c) {
-        out.append("\tCMOVE(").append(c.getValeur()).append(", R0)\n");
-        out.append("\tPUSH(R0)\n");
+    private void genererConst(Const c, StringBuilder code) {
+        code.append("\tCMOVE(").append(c.getValeur()).append(", R0)\n");
+        code.append("\tPUSH(R0)\n");
     }
 
     /**
@@ -124,7 +114,7 @@ public class GenerateurExpression {
      * @param idf l'identifiant à générer
      * @param tds la table des symboles
      */
-    private void genererIdf(Idf idf, Tds tds) {
+    private void genererIdf(Idf idf, Tds tds, StringBuilder code) {
         String nom = idf.getValeur().toString();
 
         // rechercher d'abord dans la TDS avec le scope de la fonction courante (pour gérer les variables locales)
@@ -144,19 +134,19 @@ public class GenerateurExpression {
 
         switch (item.getCategorie()) {
             // global: on charge directement en mémoire
-            case GLOBAL -> out.append("\tLD(").append(nom).append(", R0)\n").append("\tPUSH(R0)\n");
+            case GLOBAL -> code.append("\tLD(").append(nom).append(", R0)\n").append("\tPUSH(R0)\n");
 
             // local: on utilise l'offset pour accéder à la variable dans la pile
             case LOCAL -> {
                 int offset = item.getRang(); // local0=0, local1=1 a partir de BP
-                out.append("\tGETFRAME(").append(offset*4).append(", R0)\n").append("\tPUSH(R0)\n");
+                code.append("\tGETFRAME(").append(offset*4).append(", R0)\n").append("\tPUSH(R0)\n");
             }
 
             // paramètre: on utilise l'offset pour accéder au paramètre dans la pile (offset = rang + 4)
             case PARAM -> {
                 int nbParam = tds.getNbParamFonction(scopeFonction);
                 int offset = -4 * (2 + nbParam - item.getRang());
-                out.append("\tGETFRAME(").append(offset).append(", R0)\n").append("\tPUSH(R0)\n");
+                code.append("\tGETFRAME(").append(offset).append(", R0)\n").append("\tPUSH(R0)\n");
             }
 
             default -> throw new IllegalArgumentException("Identifiant de catégorie non gérée: " + item.getCategorie());
@@ -166,8 +156,8 @@ public class GenerateurExpression {
     /**
      * Génère le code pour une lecture
      */
-    private void genererLire() {
-        out.append("\tRDINT()\n").append("\tPUSH(R0)\n");
+    private void genererLire(StringBuilder code) {
+        code.append("\tRDINT()\n").append("\tPUSH(R0)\n");
     }
 
     /**
@@ -177,14 +167,15 @@ public class GenerateurExpression {
      * @param operation le nom de l'opération à générer (ADD, SUB, MUL, DIV)
      * @param tds la table des symboles
      */
-    private void genererBinaire(Noeud gauche, Noeud droit, String operation, Tds tds) {
-        genererExpression(gauche, tds); // résultat de gauche sur la pile
-        genererExpression(droit, tds); // résultat de droit sur la pile
+    private void genererBinaire(Noeud gauche, Noeud droit, String operation, Tds tds, StringBuilder code) {
+        // chaque sous-expression génère son code dans la pile
+        code.append(generer(gauche, tds));
+        code.append(generer(droit, tds));
 
-        out.append("\tPOP(R1)\n"); // droit dans R1
-        out.append("\tPOP(R0)\n"); // gauche dans R0
-        out.append("\t").append(operation).append("(R0, R1, R0)\n"); // R0 = R0 op R1
-        out.append("\tPUSH(R0)\n"); // résultat dans R0 et poussé sur la pile
+        code.append("\tPOP(R1)\n"); // droit dans R1
+        code.append("\tPOP(R0)\n"); // gauche dans R0
+        code.append("\t").append(operation).append("(R0, R1, R0)\n"); // R0 = R0 op R1
+        code.append("\tPUSH(R0)\n"); // résultat dans R0 et poussé sur la pile
     }
 
 }
