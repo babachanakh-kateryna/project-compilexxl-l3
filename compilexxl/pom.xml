@@ -9,16 +9,78 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <plugins>
+
+            <!-- CUP -->
+            <plugin>
+                <groupId>com.github.vbmacher</groupId>
+                <artifactId>cup-maven-plugin</artifactId>
+                <version>11b-20160615-3</version>
+
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+
+                        <configuration>
+                            <cupDefinition>src/main/cuplex/Parser.cup</cupDefinition>
+
+                            <className>ParserCup</className>
+                            <symbolsName>Sym</symbolsName>
+
+
+                            <outputDirectory>${project.basedir}/src/main/java/generated/fr/l3/miashs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- JFlex -->
+            <plugin>
+                <groupId>de.jflex</groupId>
+                <artifactId>jflex-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <id>generate-lexer</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <lexDefinitions>
+                                <lexDefinition>${project.basedir}/src/main/cuplex</lexDefinition>
+                            </lexDefinitions>
+
+                            <outputDirectory>${project.basedir}/src/main/java/generated/fr/l3/miashs</outputDirectory>
+
+                            <jlex>true</jlex>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
             <groupId>fr.ul.miashs</groupId>
             <artifactId>compil</artifactId>
             <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.vbmacher</groupId>
+            <artifactId>java-cup-runtime</artifactId>
+            <version>11b-20160615-3</version>
         </dependency>
     </dependencies>
 
