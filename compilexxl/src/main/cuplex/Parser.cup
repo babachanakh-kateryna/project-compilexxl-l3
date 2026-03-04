@@ -1,0 +1,26 @@
+package generated.fr.l3.miashs;
+
+terminal ADD, MUL, PO, PF;
+terminal NUM;
+
+non terminal langage;
+non terminal expression, facteur, atome;
+
+start with langage;
+
+langage ::= expression ;
+
+expression ::=
+      expression ADD facteur
+    | facteur
+;
+
+facteur ::=
+      facteur MUL atome
+    | atome
+;
+
+atome ::=
+      NUM
+    | PO expression PF
+;
