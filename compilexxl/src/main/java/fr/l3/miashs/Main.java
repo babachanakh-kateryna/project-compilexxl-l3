@@ -20,6 +20,7 @@ public class Main {
             parser.parse();
 
             System.out.println("OK !");
+            System.out.println(args[0] + " analysé avec succès.");
         } catch (Exception e) {
             System.err.println("Erreur pendant l'analyse du fichier : " + args[0]);
             e.printStackTrace();
