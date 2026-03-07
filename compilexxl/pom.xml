@@ -37,7 +37,7 @@
                             <symbolsName>Sym</symbolsName>
 
 
-                            <outputDirectory>${project.basedir}/src/main/java/generated/fr/l3/miashs</outputDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -60,7 +60,7 @@
                                 <lexDefinition>${project.basedir}/src/main/cuplex</lexDefinition>
                             </lexDefinitions>
 
-                            <outputDirectory>${project.basedir}/src/main/java/generated/fr/l3/miashs</outputDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
 
                             <jlex>true</jlex>
                         </configuration>
