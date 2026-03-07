@@ -1,26 +1,185 @@
 package generated.fr.l3.miashs;
 
-terminal ADD, MUL, PO, PF;
-terminal NUM;
+/* GRAMMAIRE*/
+/* 1. terminaux */
+terminal ENTIER, VIDE;
+terminal SI, SINON, TANTQUE, RETOURNER, ECRIRE, LIRE;
 
-non terminal langage;
-non terminal expression, facteur, atome;
+terminal PLUS, MOINS, MUL, DIV;
+terminal AFF;
+terminal SUP, INF, SUPE, INFE, EG, DIF;
 
-start with langage;
+terminal PO, PF, AO, AF, PV, VIRG;
 
-langage ::= expression ;
+terminal Integer NOMBRE;
+terminal String IDF;
 
-expression ::=
-      expression ADD facteur
-    | facteur
-;
+/* 2. non terminaux */
+non terminal programme;
+non terminal liste_definitions;
+non terminal definition;
+non terminal suite_definition_entier;
 
-facteur ::=
-      facteur MUL atome
-    | atome
-;
+non terminal liste_parametres_opt;
+non terminal liste_parametres;
+non terminal parametre;
 
-atome ::=
-      NUM
-    | PO expression PF
-;
+non terminal bloc;
+non terminal declarations_locales_opt;
+non terminal declarations_locales;
+non terminal declaration_locale;
+
+non terminal liste_instructions_opt;
+non terminal liste_instructions;
+non terminal instruction;
+
+non terminal affectation;
+non terminal ecriture;
+non terminal retour;
+non terminal alternative;
+non terminal repetitive;
+non terminal appel;
+
+non terminal liste_arguments_opt;
+non terminal liste_arguments;
+
+non terminal condition;
+non terminal operateur_comparaison;
+
+non terminal expression;
+non terminal terme;
+non terminal facteur;
+
+/* priorités */
+precedence left PLUS, MOINS;
+precedence left MUL, DIV;
+
+/* 3. axiome / start */
+start with programme;
+
+/* 4. REGLES */
+programme ::= liste_definitions
+ ;
+
+liste_definitions ::= liste_definitions definition
+ | definition
+ ;
+
+/* définitions globales */
+definition ::= ENTIER IDF suite_definition_entier
+ | VIDE IDF PO liste_parametres_opt PF bloc
+ ;
+
+/* après ENTIER IDF, on distingue variable globale ou fonction */
+suite_definition_entier ::= PV
+ | AFF expression PV
+ | PO liste_parametres_opt PF bloc
+ ;
+
+/* paramètres */
+liste_parametres_opt ::= liste_parametres
+ |
+ ;
+
+liste_parametres ::= liste_parametres VIRG parametre
+ | parametre
+ ;
+
+parametre ::= ENTIER IDF
+ ;
+
+/* bloc */
+bloc ::= AO declarations_locales_opt liste_instructions_opt AF
+ ;
+
+/* variables locales */
+declarations_locales_opt ::= declarations_locales
+ |
+ ;
+
+declarations_locales ::= declarations_locales declaration_locale
+ | declaration_locale
+ ;
+
+declaration_locale ::= ENTIER IDF PV
+ ;
+
+/* instructions */
+liste_instructions_opt ::= liste_instructions
+ |
+ ;
+
+liste_instructions ::= liste_instructions instruction
+ | instruction
+ ;
+
+instruction ::= affectation PV
+ | ecriture PV
+ | appel PV
+ | retour PV
+ | alternative
+ | repetitive
+ ;
+
+/* affectation */
+affectation ::= IDF AFF expression
+ ;
+
+/* écriture */
+ecriture ::= ECRIRE PO expression PF
+ ;
+
+/* retour */
+retour ::= RETOURNER expression
+ ;
+
+/* alternative */
+alternative ::= SI PO condition PF bloc
+ | SI PO condition PF bloc SINON bloc
+ ;
+
+/* répétitive */
+repetitive ::= TANTQUE PO condition PF bloc
+ ;
+
+/* appel */
+appel ::= IDF PO liste_arguments_opt PF
+ ;
+
+liste_arguments_opt ::= liste_arguments
+ |
+ ;
+
+liste_arguments ::= liste_arguments VIRG expression
+ | expression
+ ;
+
+/* condition */
+condition ::= expression operateur_comparaison expression
+ ;
+
+operateur_comparaison ::= SUP
+ | INF
+ | SUPE
+ | INFE
+ | EG
+ | DIF
+ ;
+
+/* expressions */
+expression ::= expression PLUS terme
+ | expression MOINS terme
+ | terme
+ ;
+
+terme ::= terme MUL facteur
+ | terme DIV facteur
+ | facteur
+ ;
+
+facteur ::= NOMBRE
+ | IDF
+ | appel
+ | LIRE PO PF
+ | PO expression PF
+ ;
