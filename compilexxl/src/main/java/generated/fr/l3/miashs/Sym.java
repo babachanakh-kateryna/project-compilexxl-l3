@@ -8,21 +8,65 @@ package generated.fr.l3.miashs;
 /** CUP generated interface containing symbol constants. */
 public interface Sym {
   /* terminals */
-  public static final int NUM = 6;
-  public static final int PF = 5;
-  public static final int PO = 4;
-  public static final int error = 1;
-  public static final int MUL = 3;
-  public static final int ADD = 2;
+  public static final int IDF = 28;
+  public static final int PLUS = 10;
+  public static final int SUPE = 17;
+  public static final int SUP = 15;
+  public static final int LIRE = 9;
+  public static final int ECRIRE = 8;
+  public static final int TANTQUE = 6;
+  public static final int AFF = 14;
+  public static final int INFE = 18;
+  public static final int PV = 25;
+  public static final int AO = 23;
+  public static final int MOINS = 11;
+  public static final int INF = 16;
+  public static final int SINON = 5;
+  public static final int PO = 21;
+  public static final int NOMBRE = 27;
+  public static final int ENTIER = 2;
   public static final int EOF = 0;
+  public static final int VIRG = 26;
+  public static final int RETOURNER = 7;
+  public static final int AF = 24;
+  public static final int DIV = 13;
+  public static final int SI = 4;
+  public static final int error = 1;
+  public static final int PF = 22;
+  public static final int VIDE = 3;
+  public static final int MUL = 12;
+  public static final int DIF = 20;
+  public static final int EG = 19;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
-  "ADD",
+  "ENTIER",
+  "VIDE",
+  "SI",
+  "SINON",
+  "TANTQUE",
+  "RETOURNER",
+  "ECRIRE",
+  "LIRE",
+  "PLUS",
+  "MOINS",
   "MUL",
+  "DIV",
+  "AFF",
+  "SUP",
+  "INF",
+  "SUPE",
+  "INFE",
+  "EG",
+  "DIF",
   "PO",
   "PF",
-  "NUM"
+  "AO",
+  "AF",
+  "PV",
+  "VIRG",
+  "NOMBRE",
+  "IDF"
   };
 }
 
