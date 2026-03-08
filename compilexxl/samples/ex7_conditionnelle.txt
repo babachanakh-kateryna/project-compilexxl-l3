@@ -1,0 +1,11 @@
+entier a = 1;
+entier b = 2;
+entier x;
+
+vide main() {
+    si (a > b) {
+        x = 1000;
+    } sinon {
+        x = 2000;
+    }
+}
