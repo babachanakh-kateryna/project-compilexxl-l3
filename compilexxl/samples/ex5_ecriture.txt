@@ -1,0 +1,6 @@
+entier a = 100;
+entier b = 170;
+
+vide main() {
+    ecrire(a * 2 + (b - 5) / 3);
+}
