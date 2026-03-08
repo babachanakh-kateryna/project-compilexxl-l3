@@ -1,0 +1,9 @@
+entier i;
+
+vide main() {
+    i = 0;
+    tantque (i < 6) {
+        ecrire(i);
+        i = i + 1;
+    }
+}
