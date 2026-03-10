@@ -7,7 +7,7 @@ import java.util.Map;
  **/
 public class Tds {
 
-    private final Map<String, Item> items; // items de la TDS, indexés par leur nom
+    private Map<String, Item> items; // items de la TDS, indexés par leur nom
 
     /** Constructeur de la TDS, initialisant la map d'items */
     public Tds() {
@@ -25,7 +25,15 @@ public class Tds {
         if (items.containsKey(item.getNom())) {
             throw new IllegalArgumentException("Item déjà défini dans cette TDS : " + item.getNom());
         }
-        items.put(item.getNom(), item);
+        // on place toujours les fonctions avant les autres symboles
+        if (item.getCategorie() == CategorieSymbole.FONCTION) {
+            LinkedHashMap<String, Item> nouvelleMap = new LinkedHashMap<>();
+            nouvelleMap.put(item.getNom(), item);
+            nouvelleMap.putAll(items);
+            items = nouvelleMap;
+        } else {
+            items.put(item.getNom(), item);
+        }
     }
 
     /**
