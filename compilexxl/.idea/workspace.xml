@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1672cdf3-d4d1-44fe-a995-887f38ff834b" name="Changes" comment="Test de 9 exemple (récursive)">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="1672cdf3-d4d1-44fe-a995-887f38ff834b" name="Changes" comment="modif programme principal">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex1_programme_minimal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex1_programme_minimal.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex2_variables_globales.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex2_variables_globales.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex3_expression.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex3_expression.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex4_ecriture.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex4_ecriture.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex5_ecriture.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex5_ecriture.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex6_variables_locales_et_parametres.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex6_variables_locales_et_parametres.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex7_conditionnelle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex7_conditionnelle.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex8_iteration.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex8_iteration.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/ex9_recursivite.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/samples/ex9_recursivite.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/l3/miashs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/l3/miashs/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,44 +49,61 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TestConditionnelle.executor": "Run",
-    "Application.TestEcriture.executor": "Run",
-    "Application.TestEcritureExpression.executor": "Run",
-    "Application.TestExpression.executor": "Run",
-    "Application.TestIteration.executor": "Run",
-    "Application.TestProgrammeMinimal.executor": "Run",
-    "Application.TestRecursivite.executor": "Run",
-    "Application.TestVariablesGlobales.executor": "Run",
-    "Application.TestVariablesLocalesEtParametres.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/Univ France/L3/s6/compil/project-compilexxl-l3/compilexxl/src/main/java/fr/l3/miashs/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestConditionnelle.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestEcriture.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestEcritureExpression.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestExpression.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestIteration.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestProgrammeMinimal.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestRecursivite.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestVariablesGlobales.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestVariablesLocalesEtParametres.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.compilexxl [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.compilexxl [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Univ France/L3/s6/compil/project-compilexxl-l3/compilexxl&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/Univ France/L3/s6/compil/project-compilexxl-l3/compilexxl/src/main/java/fr/l3/miashs/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.TestRecursivite">
-    <configuration name="TestConditionnelle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestConditionnelle" />
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Univ France\L3\s6\compil\project-compilexxl-l3\compilexxl\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.l3.miashs.Main" />
       <module name="compilexxl" />
+      <option name="PROGRAM_PARAMETERS" value="src/main/resources/samples/ex9_recursivite.txt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.l3.miashs.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestEcritureExpression" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestEcritureExpression" />
+    <configuration name="TestConditionnelle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestConditionnelle" />
       <module name="compilexxl" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -89,7 +117,16 @@
       </method>
     </configuration>
     <configuration name="TestRecursivite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-23" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="TestRecursivite" />
+      <module name="compilexxl" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestVariablesGlobales" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestVariablesGlobales" />
       <module name="compilexxl" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -102,21 +139,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.TestVariablesGlobales" />
+      <item itemvalue="Application.TestConditionnelle" />
+      <item itemvalue="Application.TestIteration" />
+      <item itemvalue="Application.TestRecursivite" />
+      <item itemvalue="Application.TestVariablesLocalesEtParametres" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestVariablesGlobales" />
+        <item itemvalue="Application.TestVariablesLocalesEtParametres" />
         <item itemvalue="Application.TestRecursivite" />
         <item itemvalue="Application.TestIteration" />
         <item itemvalue="Application.TestConditionnelle" />
-        <item itemvalue="Application.TestVariablesLocalesEtParametres" />
-        <item itemvalue="Application.TestEcritureExpression" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
@@ -130,118 +184,10 @@
       <workItem from="1770402498044" duration="1675000" />
       <workItem from="1770404203437" duration="70875000" />
       <workItem from="1771051669992" duration="27429000" />
-    </task>
-    <task id="LOCAL-00001" summary="creation dun package tds, ajout enum pour categorie, la classe item qui decrit la ligne dans la table des symboles (champs et constructeur)">
-      <option name="closed" value="true" />
-      <created>1770405339918</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1770405339918</updated>
-    </task>
-    <task id="LOCAL-00002" summary="ajout des getters/setters/toString">
-      <option name="closed" value="true" />
-      <created>1770406189932</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1770406189932</updated>
-    </task>
-    <task id="LOCAL-00003" summary="ajout de la classe Tds">
-      <option name="closed" value="true" />
-      <created>1770563138060</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1770563138060</updated>
-    </task>
-    <task id="LOCAL-00004" summary="ajout des classes vues en cours (sans realisation)">
-      <option name="closed" value="true" />
-      <created>1770565462970</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1770565462970</updated>
-    </task>
-    <task id="LOCAL-00005" summary="realisation de classe GenerateurData">
-      <option name="closed" value="true" />
-      <created>1770567187821</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1770567187821</updated>
-    </task>
-    <task id="LOCAL-00006" summary="ajout pseudo code vu en cours aux commentaires">
-      <option name="closed" value="true" />
-      <created>1770587258631</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1770587258631</updated>
-    </task>
-    <task id="LOCAL-00007" summary="ajout pseudo code vu en cours aux commentaires">
-      <option name="closed" value="true" />
-      <created>1770730192328</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1770730192328</updated>
-    </task>
-    <task id="LOCAL-00008" summary="modif tds">
-      <option name="closed" value="true" />
-      <created>1770829480026</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1770829480026</updated>
-    </task>
-    <task id="LOCAL-00009" summary="ajout realisation du GenerateurExpression">
-      <option name="closed" value="true" />
-      <created>1770829506648</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1770829506648</updated>
-    </task>
-    <task id="LOCAL-00010" summary="ajout realisation du GenerateurRetour">
-      <option name="closed" value="true" />
-      <created>1770831541780</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1770831541780</updated>
-    </task>
-    <task id="LOCAL-00011" summary="modif genererAppel selon le pseuso code vu en cours">
-      <option name="closed" value="true" />
-      <created>1770906441374</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1770906441374</updated>
-    </task>
-    <task id="LOCAL-00012" summary="modif GenerateurExpression (param/locale)">
-      <option name="closed" value="true" />
-      <created>1770915435344</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1770915435344</updated>
-    </task>
-    <task id="LOCAL-00013" summary="ajout GenerateurAppel pour expression et instruction">
-      <option name="closed" value="true" />
-      <created>1770981877533</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1770981877533</updated>
-    </task>
-    <task id="LOCAL-00014" summary="ajout realisation du GenerateurAffectation">
-      <option name="closed" value="true" />
-      <created>1770983060284</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1770983060284</updated>
+      <workItem from="1772637261182" duration="398000" />
+      <workItem from="1772637758855" duration="395000" />
+      <workItem from="1772638159586" duration="224000" />
+      <workItem from="1772638402638" duration="35904000" />
     </task>
     <task id="LOCAL-00015" summary="ajout realisation du GenerateurFonction">
       <option name="closed" value="true" />
@@ -443,39 +389,235 @@
       <option name="project" value="LOCAL" />
       <updated>1771186483076</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="ajout des plugins CUP/JFlex">
+      <option name="closed" value="true" />
+      <created>1772649365977</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1772649365977</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ajout dun exemple d utilisation (diapo arche)">
+      <option name="closed" value="true" />
+      <created>1772649409790</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1772649409790</updated>
+    </task>
+    <task id="LOCAL-00042" summary="modif name">
+      <option name="closed" value="true" />
+      <created>1772649480543</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1772649480543</updated>
+    </task>
+    <task id="LOCAL-00043" summary="définir l’analyse lexicale">
+      <option name="closed" value="true" />
+      <created>1772889856790</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1772889856790</updated>
+    </task>
+    <task id="LOCAL-00044" summary="définir grammaire">
+      <option name="closed" value="true" />
+      <created>1772889887162</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1772889887162</updated>
+    </task>
+    <task id="LOCAL-00045" summary="compile project">
+      <option name="closed" value="true" />
+      <created>1772889921831</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1772889921831</updated>
+    </task>
+    <task id="LOCAL-00046" summary="compile project">
+      <option name="closed" value="true" />
+      <created>1772889929505</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1772889929505</updated>
+    </task>
+    <task id="LOCAL-00047" summary="compile project">
+      <option name="closed" value="true" />
+      <created>1772889959455</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1772889959455</updated>
+    </task>
+    <task id="LOCAL-00048" summary="main pour run scanner et parser">
+      <option name="closed" value="true" />
+      <created>1772906996278</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1772906996278</updated>
+    </task>
+    <task id="LOCAL-00049" summary="ajout du premier programme (programme minimal)">
+      <option name="closed" value="true" />
+      <created>1772907155245</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1772907155245</updated>
+    </task>
+    <task id="LOCAL-00050" summary="ajout du 2 programme (variables globales)">
+      <option name="closed" value="true" />
+      <created>1772918633393</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1772918633394</updated>
+    </task>
+    <task id="LOCAL-00051" summary="ajout du 3 programme (expression)">
+      <option name="closed" value="true" />
+      <created>1772918655542</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1772918655542</updated>
+    </task>
+    <task id="LOCAL-00052" summary="ajout du 4 programme (ecriture)">
+      <option name="closed" value="true" />
+      <created>1772987404357</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1772987404357</updated>
+    </task>
+    <task id="LOCAL-00053" summary="ajout du 5 programme (ecriture)">
+      <option name="closed" value="true" />
+      <created>1772987412613</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1772987412613</updated>
+    </task>
+    <task id="LOCAL-00054" summary="ajout du 6 programme (variables locales et parametres)">
+      <option name="closed" value="true" />
+      <created>1772987436822</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1772987436822</updated>
+    </task>
+    <task id="LOCAL-00055" summary="ajout du 7 programme (conditionnelle)">
+      <option name="closed" value="true" />
+      <created>1772987452063</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1772987452063</updated>
+    </task>
+    <task id="LOCAL-00056" summary="ajout du 8 programme (iteration)">
+      <option name="closed" value="true" />
+      <created>1772987464064</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1772987464064</updated>
+    </task>
+    <task id="LOCAL-00057" summary="ajout du 9 programme (rrecursivite)">
+      <option name="closed" value="true" />
+      <created>1772987478536</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1772987478536</updated>
+    </task>
+    <task id="LOCAL-00058" summary="ajout generation d arbre abstrait dans le parser">
+      <option name="closed" value="true" />
+      <created>1773129126003</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1773129126003</updated>
+    </task>
+    <task id="LOCAL-00059" summary="modif main">
+      <option name="closed" value="true" />
+      <created>1773129143909</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1773129143909</updated>
+    </task>
+    <task id="LOCAL-00060" summary="modif l ordre de tds">
+      <option name="closed" value="true" />
+      <created>1773138424275</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1773138424276</updated>
+    </task>
+    <task id="LOCAL-00061" summary="ajout classe qui construit tds pendant parser">
+      <option name="closed" value="true" />
+      <created>1773144740351</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1773144740351</updated>
+    </task>
+    <task id="LOCAL-00062" summary="modif parser">
+      <option name="closed" value="true" />
+      <created>1773144759889</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1773144759889</updated>
+    </task>
+    <task id="LOCAL-00063" summary="modif programme principal">
+      <option name="closed" value="true" />
+      <created>1773144884785</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1773144884785</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ajout realisation du GenerateurFonction" />
-    <MESSAGE value="ptt modif" />
-    <MESSAGE value="ajout realisation GenerateurProgramme" />
-    <MESSAGE value="modif constructor" />
-    <MESSAGE value="Test de génération d'un programme minimal" />
-    <MESSAGE value="modif representation du code" />
-    <MESSAGE value="Test de deuxième exemple (variables globales)" />
-    <MESSAGE value="Test de 3 exemple (expression)" />
-    <MESSAGE value="ajout GenerateurEcrire" />
-    <MESSAGE value="Test de génération de code pour une écriture (exemple4)" />
-    <MESSAGE value="ptt modif des tests" />
-    <MESSAGE value="Test de 5 exemple (expression)" />
-    <MESSAGE value="modif f. rechercher avec le scope (nom@scope)" />
-    <MESSAGE value="modif package tds" />
-    <MESSAGE value="modif param/prog/retour dans package generation" />
-    <MESSAGE value="Test de 6 exemple (variables locales et paramètres)" />
-    <MESSAGE value="unif code" />
-    <MESSAGE value="modif GenerateurCondition" />
-    <MESSAGE value="modif GenerateurBloc" />
-    <MESSAGE value="modif SI" />
-    <MESSAGE value="Test de 7 exemple (Conditionnelle)" />
-    <MESSAGE value="modif TQ" />
     <MESSAGE value="Test de 8 exemple (Itération)" />
     <MESSAGE value="clean" />
     <MESSAGE value="Test de 9 exemple (récursive)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test de 9 exemple (récursive)" />
+    <MESSAGE value="ajout des plugins CUP/JFlex" />
+    <MESSAGE value="ajout dun exemple d utilisation (diapo arche)" />
+    <MESSAGE value="modif name" />
+    <MESSAGE value="définir l’analyse lexicale" />
+    <MESSAGE value="définir grammaire" />
+    <MESSAGE value="compile project" />
+    <MESSAGE value="main pour run scanner et parser" />
+    <MESSAGE value="ajout du premier programme (programme minimal)" />
+    <MESSAGE value="ajout du 2 programme (variables globales)" />
+    <MESSAGE value="ajout du 3 programme (expression)" />
+    <MESSAGE value="ajout du 4 programme (ecriture)" />
+    <MESSAGE value="ajout du 5 programme (ecriture)" />
+    <MESSAGE value="ajout du 6 programme (variables locales et parametres)" />
+    <MESSAGE value="ajout du 7 programme (conditionnelle)" />
+    <MESSAGE value="ajout du 8 programme (iteration)" />
+    <MESSAGE value="ajout du 9 programme (rrecursivite)" />
+    <MESSAGE value="ajout generation d arbre abstrait dans le parser" />
+    <MESSAGE value="modif main" />
+    <MESSAGE value="modif l ordre de tds" />
+    <MESSAGE value="ajout classe qui construit tds pendant parser" />
+    <MESSAGE value="modif parser" />
+    <MESSAGE value="modif programme principal" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif programme principal" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
