@@ -1,5 +1,21 @@
 package generated.fr.l3.miashs;
 
+import fr.ul.miashs.compil.arbre.*;
+import java.util.ArrayList;
+
+/* code Java inséré dans le parser */
+action code {:
+    private Fonction construireFonction(String nom, Bloc bloc) {
+        Fonction f = new Fonction(nom);
+        if (bloc != null && bloc.getFils() != null) {
+            for (Noeud n : bloc.getFils()) {
+                f.ajouterUnFils(n);
+            }
+        }
+        return f;
+    }
+:}
+
 /* GRAMMAIRE*/
 /* 1. terminaux */
 terminal ENTIER, VIDE;
@@ -15,40 +31,39 @@ terminal Integer NOMBRE;
 terminal String IDF;
 
 /* 2. non terminaux */
-non terminal programme;
-non terminal liste_definitions;
-non terminal definition;
-non terminal suite_definition_entier;
+non terminal Prog programme;
+non terminal Prog liste_definitions;
+non terminal Fonction definition;
+non terminal Bloc suite_definition_entier;
 
-non terminal liste_parametres_opt;
-non terminal liste_parametres;
-non terminal parametre;
+non terminal ArrayList liste_parametres_opt;
+non terminal ArrayList liste_parametres;
+non terminal String parametre;
 
-non terminal bloc;
-non terminal declarations_locales_opt;
-non terminal declarations_locales;
-non terminal declaration_locale;
+non terminal Bloc bloc;
+non terminal ArrayList declarations_locales_opt;
+non terminal ArrayList declarations_locales;
+non terminal String declaration_locale;
 
-non terminal liste_instructions_opt;
-non terminal liste_instructions;
-non terminal instruction;
+non terminal Bloc liste_instructions_opt;
+non terminal Bloc liste_instructions;
+non terminal Noeud instruction;
 
-non terminal affectation;
-non terminal ecriture;
-non terminal retour;
-non terminal alternative;
-non terminal repetitive;
-non terminal appel;
+non terminal Affectation affectation;
+non terminal Ecrire ecriture;
+non terminal Retour retour;
+non terminal Si alternative;
+non terminal TantQue repetitive;
+non terminal Appel appel;
 
-non terminal liste_arguments_opt;
-non terminal liste_arguments;
+non terminal ArrayList liste_arguments_opt;
+non terminal ArrayList liste_arguments;
 
-non terminal condition;
-non terminal operateur_comparaison;
+non terminal Noeud condition;
 
-non terminal expression;
-non terminal terme;
-non terminal facteur;
+non terminal Noeud expression;
+non terminal Noeud terme;
+non terminal Noeud facteur;
 
 /* priorités */
 precedence left PLUS, MOINS;
@@ -58,128 +73,330 @@ precedence left MUL, DIV;
 start with programme;
 
 /* 4. REGLES */
-programme ::= liste_definitions
- ;
+programme ::= liste_definitions:ld
+{: RESULT = ld; :}
+;
 
-liste_definitions ::= liste_definitions definition
- | definition
- ;
+liste_definitions ::= liste_definitions:ld definition:d
+{:
+    if (d != null) {
+        ld.ajouterUnFils(d);
+    }
+    RESULT = ld;
+:}
+| definition:d
+{:
+    Prog p = new Prog();
+    if (d != null) {
+        p.ajouterUnFils(d);
+    }
+    RESULT = p;
+:}
+;
 
 /* définitions globales */
-definition ::= ENTIER IDF suite_definition_entier
- | VIDE IDF PO liste_parametres_opt PF bloc
- ;
-
+definition ::= ENTIER IDF:id suite_definition_entier:s
+{:
+    if (s == null) {
+        RESULT = null;   /* déclaration globale : pas dans l'ARBRE */
+    } else {
+        RESULT = construireFonction(id, s);
+    }
+:}
+| VIDE IDF:id PO liste_parametres_opt PF bloc:b
+{:
+    RESULT = construireFonction(id, b);
+:}
+;
 /* après ENTIER IDF, on distingue variable globale ou fonction */
 suite_definition_entier ::= PV
- | AFF expression PV
- | PO liste_parametres_opt PF bloc
- ;
+{: RESULT = null; :}
+| AFF expression PV
+{: RESULT = null; :}
+| PO liste_parametres_opt PF bloc:b
+{: RESULT = b; :}
+;
+
 
 /* paramètres */
-liste_parametres_opt ::= liste_parametres
- |
- ;
+liste_parametres_opt ::= liste_parametres:lp
+{: RESULT = lp; :}
+|
+{:
+    RESULT = new ArrayList();
+:}
+;
 
-liste_parametres ::= liste_parametres VIRG parametre
- | parametre
- ;
+liste_parametres ::= liste_parametres:lp VIRG parametre:p
+{:
+    lp.add(p);
+    RESULT = lp;
+:}
+| parametre:p
+{:
+    ArrayList l = new ArrayList();
+    l.add(p);
+    RESULT = l;
+:}
+;
 
-parametre ::= ENTIER IDF
- ;
+parametre ::= ENTIER IDF:id
+{: RESULT = id; :}
+;
 
 /* bloc */
-bloc ::= AO declarations_locales_opt liste_instructions_opt AF
- ;
+bloc ::= AO declarations_locales_opt liste_instructions_opt:li AF
+{: RESULT = li; :}
+;
 
 /* variables locales */
-declarations_locales_opt ::= declarations_locales
- |
- ;
+declarations_locales_opt ::= declarations_locales:dl
+{: RESULT = dl; :}
+|
+{:
+    RESULT = new ArrayList();
+:}
+;
 
-declarations_locales ::= declarations_locales declaration_locale
- | declaration_locale
- ;
+declarations_locales ::= declarations_locales:dl declaration_locale:d
+{:
+    dl.add(d);
+    RESULT = dl;
+:}
+| declaration_locale:d
+{:
+    ArrayList l = new ArrayList();
+    l.add(d);
+    RESULT = l;
+:}
+;
 
-declaration_locale ::= ENTIER IDF PV
- ;
+declaration_locale ::= ENTIER IDF:id PV
+{: RESULT = id; :}
+;
 
 /* instructions */
-liste_instructions_opt ::= liste_instructions
- |
- ;
+liste_instructions_opt ::= liste_instructions:li
+{: RESULT = li; :}
+|
+{:
+    RESULT = new Bloc();
+:}
+;
 
-liste_instructions ::= liste_instructions instruction
- | instruction
- ;
+liste_instructions ::= liste_instructions:li instruction:i
+{:
+    li.ajouterUnFils(i);
+    RESULT = li;
+:}
+| instruction:i
+{:
+    Bloc b = new Bloc();
+    b.ajouterUnFils(i);
+    RESULT = b;
+:}
+;
 
-instruction ::= affectation PV
- | ecriture PV
- | appel PV
- | retour PV
- | alternative
- | repetitive
- ;
+instruction ::= affectation:a PV
+{: RESULT = a; :}
+| ecriture:e PV
+{: RESULT = e; :}
+| appel:a PV
+{: RESULT = a; :}
+| retour:r PV
+{: RESULT = r; :}
+| alternative:s
+{: RESULT = s; :}
+| repetitive:t
+{: RESULT = t; :}
+;
 
 /* affectation */
-affectation ::= IDF AFF expression
- ;
+affectation ::= IDF:id AFF expression:e
+{:
+    Affectation a = new Affectation();
+    a.setFilsGauche(new Idf(id));
+    a.setFilsDroit(e);
+    RESULT = a;
+:}
+;
 
 /* écriture */
-ecriture ::= ECRIRE PO expression PF
- ;
+ecriture ::= ECRIRE PO expression:e PF
+{:
+    Ecrire ecr = new Ecrire();
+    ecr.setLeFils(e);
+    RESULT = ecr;
+:}
+;
 
 /* retour */
-retour ::= RETOURNER expression
- ;
+retour ::= RETOURNER expression:e
+{:
+    Retour r = new Retour("retour");
+    r.setLeFils(e);
+    RESULT = r;
+:}
+;
 
 /* alternative */
-alternative ::= SI PO condition PF bloc
- | SI PO condition PF bloc SINON bloc
- ;
+alternative ::= SI PO condition:c PF bloc:alors
+{:
+    Si s = new Si();
+    s.setCondition(c);
+    s.setBlocAlors(alors);
+    s.setBlocSinon(new Bloc());
+    RESULT = s;
+:}
+| SI PO condition:c PF bloc:alors SINON bloc:sinon
+{:
+    Si s = new Si();
+    s.setCondition(c);
+    s.setBlocAlors(alors);
+    s.setBlocSinon(sinon);
+    RESULT = s;
+:}
+;
 
 /* répétitive */
-repetitive ::= TANTQUE PO condition PF bloc
- ;
+repetitive ::= TANTQUE PO condition:c PF bloc:b
+{:
+    TantQue t = new TantQue();
+    t.setCondition(c);
+    t.setBloc(b);
+    RESULT = t;
+:}
+;
 
 /* appel */
-appel ::= IDF PO liste_arguments_opt PF
- ;
+appel ::= IDF:id PO liste_arguments_opt:la PF
+{:
+    Appel a = new Appel(id);
+    for (Object o : la) {
+        a.ajouterUnFils((Noeud) o);
+    }
+    RESULT = a;
+:}
+;
 
-liste_arguments_opt ::= liste_arguments
+liste_arguments_opt ::= liste_arguments:la
+ {: RESULT = la; :}
  |
+ {:
+     RESULT = new ArrayList();
+ :}
  ;
 
-liste_arguments ::= liste_arguments VIRG expression
- | expression
- ;
+liste_arguments ::= liste_arguments:la VIRG expression:e
+{:
+    la.add(e);
+    RESULT = la;
+:}
+| expression:e
+{:
+    ArrayList l = new ArrayList();
+    l.add(e);
+    RESULT = l;
+:}
+;
 
 /* condition */
-condition ::= expression operateur_comparaison expression
- ;
-
-operateur_comparaison ::= SUP
- | INF
- | SUPE
- | INFE
- | EG
- | DIF
- ;
+/* condition */
+condition ::= expression:g SUP expression:d
+{:
+    Superieur n = new Superieur();
+    n.setFilsGauche(g);
+    n.setFilsDroit(d);
+    RESULT = n;
+:}
+| expression:g INF expression:d
+{:
+    Inferieur n = new Inferieur();
+    n.setFilsGauche(g);
+    n.setFilsDroit(d);
+    RESULT = n;
+:}
+| expression:g SUPE expression:d
+{:
+    SuperieurEgal n = new SuperieurEgal();
+    n.setFilsGauche(g);
+    n.setFilsDroit(d);
+    RESULT = n;
+:}
+| expression:g INFE expression:d
+{:
+    InferieurEgal n = new InferieurEgal();
+    n.setFilsGauche(g);
+    n.setFilsDroit(d);
+    RESULT = n;
+:}
+| expression:g EG expression:d
+{:
+    Egal n = new Egal();
+    n.setFilsGauche(g);
+    n.setFilsDroit(d);
+    RESULT = n;
+:}
+| expression:g DIF expression:d
+{:
+    Different n = new Different();
+    n.setFilsGauche(g);
+    n.setFilsDroit(d);
+    RESULT = n;
+:}
+;
 
 /* expressions */
-expression ::= expression PLUS terme
- | expression MOINS terme
- | terme
- ;
+expression ::= expression:g PLUS terme:d
+{:
+    Plus p = new Plus();
+    p.setFilsGauche(g);
+    p.setFilsDroit(d);
+    RESULT = p;
+:}
+| expression:g MOINS terme:d
+{:
+    Moins m = new Moins();
+    m.setFilsGauche(g);
+    m.setFilsDroit(d);
+    RESULT = m;
+:}
+| terme:t
+{: RESULT = t; :}
+;
 
-terme ::= terme MUL facteur
- | terme DIV facteur
- | facteur
- ;
+terme ::= terme:g MUL facteur:d
+{:
+    Multiplication m = new Multiplication();
+    m.setFilsGauche(g);
+    m.setFilsDroit(d);
+    RESULT = m;
+:}
+| terme:g DIV facteur:d
+{:
+    Division d1 = new Division();
+    d1.setFilsGauche(g);
+    d1.setFilsDroit(d);
+    RESULT = d1;
+:}
+| facteur:f
+{: RESULT = f; :}
+;
 
-facteur ::= NOMBRE
- | IDF
- | appel
- | LIRE PO PF
- | PO expression PF
- ;
+facteur ::= NOMBRE:n
+{:
+    RESULT = new Const(n);
+:}
+| IDF:id
+{:
+    RESULT = new Idf(id);
+:}
+| appel:a
+{: RESULT = a; :}
+| LIRE PO PF
+{:
+    RESULT = new Lire();
+:}
+| PO expression:e PF
+{: RESULT = e; :}
+;
