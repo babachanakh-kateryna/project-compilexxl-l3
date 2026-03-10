@@ -5,6 +5,7 @@ import generated.fr.l3.miashs.ParserCup;
 import generated.fr.l3.miashs.Yylex;
 import fr.ul.miashs.compil.arbre.Noeud;
 import fr.ul.miashs.compil.arbre.TxtAfficheur;
+import fr.l3.miashs.tds.*;
 
 
 public class Main {
@@ -30,6 +31,13 @@ public class Main {
             } else {
                 System.out.println("Aucun arbre abstrait produit.");
             }
+
+
+            Tds tds = parser.getTds();
+
+            System.out.println("\n===== TABLE DES SYMBOLES =====");
+            System.out.println(tds);
+
 
         } catch (Exception e) {
             System.err.println("Erreur pendant l'analyse du fichier : " + args[0]);
