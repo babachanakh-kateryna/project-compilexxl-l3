@@ -2,9 +2,17 @@ package generated.fr.l3.miashs;
 
 import fr.ul.miashs.compil.arbre.*;
 import java.util.ArrayList;
+import fr.l3.miashs.tds.*;
 
 /* code Java inséré dans le parser */
+parser code {:
+    public Tds getTds() {
+        return action_obj.constructeurTds.getTds();
+    }
+:}
 action code {:
+    private ConstructeurTds constructeurTds = new ConstructeurTds();
+
     private Fonction construireFonction(String nom, Bloc bloc) {
         Fonction f = new Fonction(nom);
         if (bloc != null && bloc.getFils() != null) {
@@ -14,9 +22,40 @@ action code {:
         }
         return f;
     }
+
+    private String fonctionCourante = null;
+    private int rangLocal = 0;
+
+    private void commencerFonction(String nom, String type, ArrayList params) {
+        fonctionCourante = nom;
+        rangLocal = 0;
+
+        constructeurTds.ajouterFonction(nom, type);
+
+        int rangParam = 0;
+        for (Object o : params) {
+            String nomParam = (String) o;
+            constructeurTds.ajouterParam(nom, nomParam, rangParam);
+            rangParam++;
+        }
+        constructeurTds.setNbParamFonction(nom, params.size());
+    }
+
+    private void finirFonction() {
+        if (fonctionCourante != null) {
+            constructeurTds.setNbVarFonction(fonctionCourante, rangLocal);
+        }
+        fonctionCourante = null;
+        rangLocal = 0;
+    }
+
+    private void ajouterLocale(String nom) {
+        constructeurTds.ajouterLocal(fonctionCourante, nom, rangLocal);
+        rangLocal++;
+    }
 :}
 
-/* GRAMMAIRE*/
+/* GRAMMAIRE */
 /* 1. terminaux */
 terminal ENTIER, VIDE;
 terminal SI, SINON, TANTQUE, RETOURNER, ECRIRE, LIRE;
@@ -34,7 +73,6 @@ terminal String IDF;
 non terminal Prog programme;
 non terminal Prog liste_definitions;
 non terminal Fonction definition;
-non terminal Bloc suite_definition_entier;
 
 non terminal ArrayList liste_parametres_opt;
 non terminal ArrayList liste_parametres;
@@ -60,7 +98,6 @@ non terminal ArrayList liste_arguments_opt;
 non terminal ArrayList liste_arguments;
 
 non terminal Noeud condition;
-
 non terminal Noeud expression;
 non terminal Noeud terme;
 non terminal Noeud facteur;
@@ -94,29 +131,40 @@ liste_definitions ::= liste_definitions:ld definition:d
 :}
 ;
 
-/* définitions globales */
-definition ::= ENTIER IDF:id suite_definition_entier:s
+/* définitions globales + fonctions */
+definition ::= ENTIER IDF:id PV
 {:
-    if (s == null) {
-        RESULT = null;   /* déclaration globale : pas dans l'ARBRE */
-    } else {
-        RESULT = construireFonction(id, s);
+    constructeurTds.ajouterGlobale(id);
+    RESULT = null;
+:}
+| ENTIER IDF:id AFF expression:e PV
+{:
+    Integer val = null;
+    if (e instanceof Const) {
+        val = ((Const)e).getValeur();
     }
+    constructeurTds.ajouterGlobale(id, val);
+    RESULT = null;
 :}
-| VIDE IDF:id PO liste_parametres_opt PF bloc:b
-{:
-    RESULT = construireFonction(id, b);
-:}
+| ENTIER IDF:id PO liste_parametres_opt:lp PF
+  {:
+      commencerFonction(id, "int", lp);
+  :}
+  bloc:b
+  {:
+      RESULT = construireFonction(id, b);
+      finirFonction();
+  :}
+| VIDE IDF:id PO liste_parametres_opt:lp PF
+  {:
+      commencerFonction(id, "void", lp);
+  :}
+  bloc:b
+  {:
+      RESULT = construireFonction(id, b);
+      finirFonction();
+  :}
 ;
-/* après ENTIER IDF, on distingue variable globale ou fonction */
-suite_definition_entier ::= PV
-{: RESULT = null; :}
-| AFF expression PV
-{: RESULT = null; :}
-| PO liste_parametres_opt PF bloc:b
-{: RESULT = b; :}
-;
-
 
 /* paramètres */
 liste_parametres_opt ::= liste_parametres:lp
@@ -172,7 +220,10 @@ declarations_locales ::= declarations_locales:dl declaration_locale:d
 ;
 
 declaration_locale ::= ENTIER IDF:id PV
-{: RESULT = id; :}
+{:
+    ajouterLocale(id);
+    RESULT = id;
+:}
 ;
 
 /* instructions */
@@ -233,7 +284,7 @@ ecriture ::= ECRIRE PO expression:e PF
 /* retour */
 retour ::= RETOURNER expression:e
 {:
-    Retour r = new Retour("retour");
+    Retour r = new Retour(fonctionCourante);
     r.setLeFils(e);
     RESULT = r;
 :}
@@ -280,12 +331,12 @@ appel ::= IDF:id PO liste_arguments_opt:la PF
 ;
 
 liste_arguments_opt ::= liste_arguments:la
- {: RESULT = la; :}
- |
- {:
-     RESULT = new ArrayList();
- :}
- ;
+{: RESULT = la; :}
+|
+{:
+    RESULT = new ArrayList();
+:}
+;
 
 liste_arguments ::= liste_arguments:la VIRG expression:e
 {:
@@ -300,7 +351,6 @@ liste_arguments ::= liste_arguments:la VIRG expression:e
 :}
 ;
 
-/* condition */
 /* condition */
 condition ::= expression:g SUP expression:d
 {:
