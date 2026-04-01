@@ -1,0 +1,12 @@
+entier a = 100;
+entier c = 170;
+
+entier f(entier a, entier b) {
+    entier res;
+    res = a * 2 + (b - 5) / 3;
+    retourner res;
+}
+
+vide main() {
+    ecrire(f(a, c));
+}

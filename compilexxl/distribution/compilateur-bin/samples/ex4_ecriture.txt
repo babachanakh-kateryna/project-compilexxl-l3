@@ -1,0 +1,6 @@
+entier x;
+
+vide main() {
+    x = lire() * 2 + (lire() - 5) / 3;
+    ecrire(x);
+}
