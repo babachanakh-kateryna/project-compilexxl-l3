@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1672cdf3-d4d1-44fe-a995-887f38ff834b" name="Changes" comment="ajout jar with dependencies">
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/run.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/run.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex1_programme_minimal.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex2_variables_globales.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex3_expression.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex4_ecriture.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex5_ecriture.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex6_variables_locales_et_parametres.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex7_conditionnelle.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex8_iteration.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distribution/compilateur-bin/samples/ex9_recursivite.txt" afterDir="false" />
+    <list default="true" id="1672cdf3-d4d1-44fe-a995-887f38ff834b" name="Changes" comment="ajout readme">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assembly/source.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,39 +186,7 @@
       <workItem from="1772638402638" duration="35904000" />
       <workItem from="1773599802554" duration="6671000" />
       <workItem from="1775027319923" duration="1554000" />
-      <workItem from="1775028919068" duration="2622000" />
-    </task>
-    <task id="LOCAL-00017" summary="ajout realisation GenerateurProgramme">
-      <option name="closed" value="true" />
-      <created>1770987085614</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1770987085614</updated>
-    </task>
-    <task id="LOCAL-00018" summary="modif constructor">
-      <option name="closed" value="true" />
-      <created>1770991137944</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1770991137944</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Test de génération d'un programme minimal">
-      <option name="closed" value="true" />
-      <created>1770991210787</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1770991210787</updated>
-    </task>
-    <task id="LOCAL-00020" summary="modif representation du code">
-      <option name="closed" value="true" />
-      <created>1771014213155</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1771014213155</updated>
+      <workItem from="1775028919068" duration="6496000" />
     </task>
     <task id="LOCAL-00021" summary="Test de deuxième exemple (variables globales)">
       <option name="closed" value="true" />
@@ -589,17 +548,45 @@
       <option name="project" value="LOCAL" />
       <updated>1775034828299</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="ajout des programmes">
+      <option name="closed" value="true" />
+      <created>1775034953965</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1775034953966</updated>
+    </task>
+    <task id="LOCAL-00067" summary="ajout execution en WINDOWS">
+      <option name="closed" value="true" />
+      <created>1775034997195</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1775034997195</updated>
+    </task>
+    <task id="LOCAL-00068" summary="ajout execution en LINUX">
+      <option name="closed" value="true" />
+      <created>1775035007785</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1775035007785</updated>
+    </task>
+    <task id="LOCAL-00069" summary="ajout readme">
+      <option name="closed" value="true" />
+      <created>1775035018773</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1775035018773</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test de 9 exemple (récursive)" />
-    <MESSAGE value="ajout des plugins CUP/JFlex" />
-    <MESSAGE value="ajout dun exemple d utilisation (diapo arche)" />
-    <MESSAGE value="modif name" />
     <MESSAGE value="définir l’analyse lexicale" />
     <MESSAGE value="définir grammaire" />
     <MESSAGE value="compile project" />
@@ -621,7 +608,11 @@
     <MESSAGE value="modif programme principal" />
     <MESSAGE value="ajout des plugins for export bin" />
     <MESSAGE value="ajout jar with dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout jar with dependencies" />
+    <MESSAGE value="ajout des programmes" />
+    <MESSAGE value="ajout execution en WINDOWS" />
+    <MESSAGE value="ajout execution en LINUX" />
+    <MESSAGE value="ajout readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout readme" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
